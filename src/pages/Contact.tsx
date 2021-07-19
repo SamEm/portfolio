@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Container, H1, H2, Highlight } from "../../theme/GlobalStyles";
+import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter, faTwitch } from "@fortawesome/free-brands-svg-icons";
 
@@ -53,7 +53,7 @@ const LinkStyle = styled.a`
 
 const SocialWrap = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 50px;
   margin-top: 20px;
 `;
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Highlight, Container } from '../../theme/GlobalStyles';
-import Cloud from '../../components/Cloud';
+import { Highlight, Container } from '../theme/GlobalStyles';
+import Cloud from '../components/Cloud';
 
 export default function Home() {
 

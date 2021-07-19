@@ -61,10 +61,6 @@ export const Container = styled.div<MarginTop>`
   @media screen and (max-width: 1550px) {
     margin-top: ${(props) => `calc(${props.mt}/2)` || "50px"};
   }
-
-  /* @media screen and (max-width: 1200px) {
-    margin-top: 50px;
-  } */
 `;
 
 export const H1 = styled.h1`

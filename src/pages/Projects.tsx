@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Container, H1, H2, Highlight } from "../../theme/GlobalStyles";
+import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 
 export default function Projects() {
   return (

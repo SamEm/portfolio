@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router-dom';
-import Contact from './pages/contact/Contact';
-import Home from './pages/home/Home';
-import Projects from './pages/projects/Projects';
-import Work from './pages/work/Work';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Work from './pages/Work';
 
 export default function PageRouting() {
   return (
