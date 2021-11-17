@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background: #E6F1FF;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .terms {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .word {
+      background-color: #d0dae7;
+      border-radius: 10px;
+      width: 500px;
+      padding: 20px;
+    }
+    .head {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="terms">
+
+  </div>
+
+  <script>
+    const words = [
+  {
+    "head": "10-Year Treasury Note",
+    "text": "A debt obligation issued by the United States government that matures in 10 years."
+  },
+  {
+    "head": "183-Day Rule",
+    "text": "used by a tax office to determine if a person, who is a dual taxpayer, will have to pay taxes in a particular country."
+  },
+  {
+    "head": "30-Year Treasury",
+    "text": "A U.S. Treasury debt obligation that has a maturity of 3 decades."
+  },
+  {
+    "head": "51% Attack",
+    "text": "- When more than half of the computing power of a cryptocurrency network is controlled by a single entity or group<br>-This entity or group may issue conflicting transactions to harm the network, should they have the malicious intent to do so."
+  },
+  {
+    "head": "401(k) Plan",
+    "text": "a tax-deferred retirement plan offered to employees by their employer"
+  },
+  {
+    "head": "52-Week High/Low",
+    "text": "highest and lowest prices paid for the stock in a year"
+  },
+  {
+    "head": "80-20 Rule",
+    "text": "A marketing rule of thumb that 20 percent of purchasers account for 80 percent of a product's sales."
+  },
+  {
+    "head": "Absolute Advantage",
+    "text": "the ability to produce a good using fewer inputs than another producer"
+  },
+  {
+    "head": "Accounting Equation",
+    "text": "An equation showing the relationship among assets, liabilities, and owner's equity"
+  },
+  {
+    "head": "Accounting Rate of Return (ARR)",
+    "text": "measures the return on a project in terms of income, as opposed to using a project's cash flow"
+  },
+  {
+    "head": "Acid-Test Ratio",
+    "text": "(Current Assets - Inventory) / Current Liabilities"
+  },
+  {
+    "head": "Acquisition",
+    "text": "the act of obtaining something, often a company"
+  },
+  {
+    "head": "Adverse Selection",
+    "text": "the situation in which one party to a transaction takes advantage of knowing more than the other party to the transaction"
+  },
+  {
+    "head": "After-Hours Trading",
+    "text": "Trades that are made after the stock market closes."
+  },
+  {
+    "head": "Alpha",
+    "text": "a term used in investing to describe an investment strategy's ability to beat the market, or it's \"edge.\""
+  },
+  {
+    "head": "Amalgamation",
+    "text": "occurs when majority and minority groups combine to form a new group"
+  },
+  {
+    "head": "Analysis of Variance (ANOVA)",
+    "text": "analysis of variance test used for designs with three or more sample means"
+  },
+  {
+    "head": "Angel Investor",
+    "text": "Individuals who provide entrepreneurs with funding and mentorship."
+  },
+  {
+    "head": "Annual Percentage Rate (APR)",
+    "text": "cost of credit expressed as a yearly percentage"
+  },
+  {
+    "head": "Annuity",
+    "text": "payment received every year"
+  },
+  {
+    "head": "Artificial Intelligence (AI)",
+    "text": "The science of designing and programming computer systems to do intelligent things and to simulate human thought processes, such as intuitive reasoning, learning, and understanding language."
+  },
+  {
+    "head": "Asset",
+    "text": "Anything of value that is owned"
+  },
+  {
+    "head": "Asset Management",
+    "text": "how a bank handles its loans and other assets"
+  },
+  {
+    "head": "Asset Turnover Ratio",
+    "text": "net sales/average total assets"
+  },
+  {
+    "head": "Automated Clearing House (ACH)",
+    "text": "an electronic system for transferring money between banks"
+  },
+  {
+    "head": "Automated Teller Machine (ATM)",
+    "text": "technology that allows a bank customer to make deposits and withdrawals electronically 24 hours a day from their bank account"
+  },
+  {
+    "head": "Average True Range (ATR)",
+    "text": "An indicator that measures a security's volatility. High values indicate high volatility and may be an indication of panic selling or panic buying."
+  },
+  {
+    "head": "Balanced Scorecard",
+    "text": "strategy implementation tool that harnesses multiple internal and external performance metrics in order to balance financial and strategic goals"
+  },
+  {
+    "head": "Balance Sheet",
+    "text": "A financial statement that reports assets, liabilities, and owner's equity on a specific date."
+  },
+  {
+    "head": "Bankruptcy",
+    "text": "A legal process to get out of debt when you can no longer make all your required payments"
+  },
+  {
+    "head": "Baye's Theorem",
+    "text": "The probability of an event occurring based upon other event probabilities."
+  },
+  {
+    "head": "Bear Market",
+    "text": "A steady drop in the stock market over a period of time"
+  },
+  {
+    "head": "Beta",
+    "text": "<div class=\"PMDocument\"><p>a measure of the volatility<em>—</em>or <span style=\"text-decoration:underline\">systematic risk</span><em>—</em>of a security or portfolio compared to the market as a whole</p></div>"
+  },
+  {
+    "head": "Bill of Lading",
+    "text": "a legal contract that defines responsibility for goods while they are in transit"
+  },
+  {
+    "head": "Bitcoin Mining",
+    "text": "The processing of transactions in the digital currency system, in which the records of current transactions, known as a blocks, are added to the record of past transactions, known as the blockchain."
+  },
+  {
+    "head": "Blockchain",
+    "text": "A type of distributed ledger technology consisting of data structure blocks that may contain data or programs, with each block holding batches of individual transactions and the results of any executables. Each block contains a time stamp and a link to a previous block."
+  },
+  {
+    "head": "Bond",
+    "text": "A financial security that represents a promise to repay a fixed amount of funds"
+  },
+  {
+    "head": "Break-Even Analysis",
+    "text": "a method of determining what sales volume must be reached before total revenue equals total costs"
+  },
+  {
+    "head": "Brexit",
+    "text": "The British Exit from the European Union"
+  },
+  {
+    "head": "Budget",
+    "text": "an estimate of income and expenditure for a set period of time."
+  },
+  {
+    "head": "Budget Deficit",
+    "text": "the difference between tax revenue and government spending when government spending exceeds tax revenue"
+  },
+  {
+    "head": "Bull Market",
+    "text": "A period of increased stock trading and rising stock prices"
+  },
+  {
+    "head": "Business Cycle",
+    "text": "Fluctuations in economic activity, such as employment and production"
+  },
+  {
+    "head": "Business Ethics",
+    "text": "principles and standards that determine acceptable conduct in business"
+  },
+  {
+    "head": "Business Model",
+    "text": "a plan that details how a company creates, delivers, and generates revenues"
+  },
+  {
+    "head": "B2C",
+    "text": "applies to any business that sells its products or services to consumers over the internet"
+  },
+  {
+    "head": "Business Valuation",
+    "text": "An estimate of the worth of an entity and its assets."
+  },
+  {
+    "head": "Capital",
+    "text": "<div class=\"PMDocument\"><p>a broad term that can describe any thing that confers value or benefit to its owner, such as a factory and its machinery, intellectual property like patents, or the <span style=\"text-decoration:underline\">financial assets</span> of a business or an individual.</p></div>"
+  },
+  {
+    "head": "Capital Asset Pricing Model (CAPM)",
+    "text": "a model that relates the required rate of return on a security to its systematic risk as measured by beta"
+  },
+  {
+    "head": "Capital Expenditure",
+    "text": "money spent by a business or organization on acquiring or maintaining fixed assets, such as land, buildings, and equipment."
+  },
+  {
+    "head": "Capitalism",
+    "text": "An economic system based on market competition and the pursuit of profit, in which the means of production or capital are privately owned by individuals or corporations"
+  },
+  {
+    "head": "Chief Executive Officer (CEO)",
+    "text": "The position hired by the board of directors to oversee the company on a daily basis."
+  },
+  {
+    "head": "Code of Ethics",
+    "text": "a formal statement of ethical principles and rules of conduct"
+  },
+  {
+    "head": "Coefficient of Variation (CV)",
+    "text": "A standardized measure of the risk per unit of return. It is calculated by dividing the standard deviation by the expected return."
+  },
+  {
+    "head": "Collateral",
+    "text": "something pledged as security for repayment of a loan, to be forfeited in the event of a default."
+  },
+  {
+    "head": "Command Economy",
+    "text": "an economy in which production, investment, prices, and incomes are determined centrally by a government."
+  },
+  {
+    "head": "Comparative Advantage",
+    "text": "the ability to produce a good at a lower opportunity cost than another producer"
+  },
+  {
+    "head": "Compound Annual Growth Rate (CAGR)",
+    "text": "The year-over-year growth rate of an investment over a specified period of time"
+  },
+  {
+    "head": "Compound Interest",
+    "text": "earned on both the principal amount and any interest already accrued"
+  },
+  {
+    "head": "Conflict Theory",
+    "text": "the idea that competing interests is the basic, animating force of social change and society in general"
+  },
+  {
+    "head": "Consumer Price Index (CPI)",
+    "text": "monthly statistics that measure the pace of inflation or deflation"
+  },
+  {
+    "head": "Contribution Margin",
+    "text": "Sales - Variable Expenses"
+  },
+  {
+    "head": "Correlation",
+    "text": "a mutual relationship or connection between two or more things"
+  },
+  {
+    "head": "Correlation Coefficient",
+    "text": "a statistical index of the relationship between two things (from -1 to +1)"
+  },
+  {
+    "head": "Creative Destruction",
+    "text": "the creation of new products and production methods completely destroys the market positions of firms that are wedded to existing products and older ways of doing business"
+  },
+  {
+    "head": "Credit Default Swap (CDS)",
+    "text": "an insurance policy on the default risk of a corporate bond or loan"
+  },
+  {
+    "head": "Current Ratio",
+    "text": "current assets divided by current liabilities"
+  },
+  {
+    "head": "Customer Service",
+    "text": "specifically refers to human or mechanical activities firms undertake to help satisfy their customers' needs and wants"
+  },
+  {
+    "head": "Days Payable Outstanding (DPO)",
+    "text": "accounts payable turnover expressed in days (365/turnover)"
+  },
+  {
+    "head": "Days Sales Outstanding (DSO)",
+    "text": "Receivables/(Annual Sales/365)"
+  },
+  {
+    "head": "Debenture",
+    "text": "a bond not backed by specific collateral"
+  },
+  {
+    "head": "Debt Ratio",
+    "text": "Total Debt/Total Assets"
+  },
+  {
+    "head": "Debt-to-Equity Ratio (D/E)",
+    "text": "An indication of the extent to which the company is leveraged, or financed by credit. Calculated by dividing total long-term debt by total assets minus total debt."
+  },
+  {
+    "head": "Deferred Compensation",
+    "text": "An agreement between an employee and a company to render payments to an employee at a future date."
+  },
+  {
+    "head": "Delivered-at-Place (DAP)",
+    "text": "The supplier pays to get it to a door at destination. The buyer is still responsible for duties and custom clearance."
+  },
+  {
+    "head": "Delivered Duty Paid (DDP)",
+    "text": "A type of contract in which the seller has agreed to deliver the goods to the buyer at the place the buyer names in the country of import, with all costs, including duties, paid."
+  },
+  {
+    "head": "Delivered Duty Unpaid (DDU)",
+    "text": "An Incoterm meaning the seller fulfills the contract obligations when the goods have arrived at a named place in the importing country. The seller bears all the costs and risk except for import duties and other customs clearance costs."
+  },
+  {
+    "head": "Demand",
+    "text": "Consumer willingness and ability to buy products"
+  },
+  {
+    "head": "Demand Elasticity",
+    "text": "the degree to which demand for a product is affected by its price"
+  },
+  {
+    "head": "Demonetization",
+    "text": "the act of ceasing a certain currency"
+  },
+  {
+    "head": "Derivative",
+    "text": "<div class=\"PMDocument\"><p>a <span style=\"text-decoration:underline\">financial security</span> with a value that is reliant upon, an underlying asset or group of assets—a benchmark.</p></div>"
+  },
+  {
+    "head": "Dilution",
+    "text": "occurs when a company issues new shares that result in a decrease in existing stockholders' ownership percentage of that company."
+  },
+  {
+    "head": "Disbursement",
+    "text": "funds paid out"
+  },
+  {
+    "head": "Diversification",
+    "text": "Spreading out investments to reduce risk"
+  },
+  {
+    "head": "Dividend",
+    "text": "The portion of corporate profits paid out to stockholders"
+  },
+  {
+    "head": "Dividend Yield",
+    "text": "dividends per share/market price per share"
+  },
+  {
+    "head": "Due Diligence",
+    "text": "Necessary level of care and attention that is taken to investigate an action before it is taken."
+  },
+  {
+    "head": "Earnest Money",
+    "text": "A sum of money given to bind an offer or agreement."
+  },
+  {
+    "head": "Earnings Before Interest and Taxes (EBIT)",
+    "text": "gross profit minus operating expenses"
+  },
+  {
+    "head": "Earnings Before Interest, Taxes, Depreciation and Amortization (EBITDA)",
+    "text": "<div class=\"PMDocument\"><p>a measure of a company's overall <span style=\"text-decoration:underline\">financial performance</span> and is used as an alternative to <span style=\"text-decoration:underline\">net income</span> in some circumstances</p></div>"
+  },
+  {
+    "head": "Earnings Per Share (EPS)",
+    "text": "measures the net income earned on each share of common stock"
+  },
+  {
+    "head": "EBITA",
+    "text": "Earnings before interest, taxes, and amortization"
+  },
+  {
+    "head": "Economic Growth",
+    "text": "a steady, long-term increase in real GDP"
+  },
+  {
+    "head": "Economic Moat",
+    "text": "The competitive advantage that one company has over other companies in the same industry."
+  },
+  {
+    "head": "Economics",
+    "text": "the branch of knowledge concerned with the production, consumption, and transfer of wealth."
+  },
+  {
+    "head": "Economies of Scale",
+    "text": "a proportionate saving in costs gained by an increased level of production."
+  },
+  {
+    "head": "Employee Stock Ownership Plan (ESOP)",
+    "text": "a compensation system that awards employees shares of company stock in addition to their regular compensation"
+  },
+  {
+    "head": "Endowment Fund",
+    "text": "income derived from donations that is set aside for a specific purpose"
+  },
+  {
+    "head": "Enterprise Resource Planning (ERP)",
+    "text": "Business management software, usually a suite of integrated applications, that a company can use to collect, store, manage and interpret data from many business activities."
+  },
+  {
+    "head": "Enterprise Value (EV)",
+    "text": "A measure of a company's total market value from which the value of cash and short-term investments have been subtracted."
+  },
+  {
+    "head": "Entrepreneur",
+    "text": "a person who organizes and operates a business or businesses, taking on greater than normal financial risks in order to do so."
+  },
+  {
+    "head": "Equity",
+    "text": "the value that would be returned to a company's shareholders if all of the assets were liquidated and all of the company's debts were paid off."
+  },
+  {
+    "head": "Escrow",
+    "text": "the depositing of money, legal documents, and instructions with a third party to be held until the conditions of a contract are fulfilled"
+  },
+  {
+    "head": "Exchange Rate",
+    "text": "The measure of how much one currency is worth in relation to another."
+  },
+  {
+    "head": "Exchange-Traded Fund (ETF)",
+    "text": "shares traded on securities markets that represent the legal right of ownership over part of a basket of individual stock certificates or other securities"
+  },
+  {
+    "head": "Externality",
+    "text": "an economic side effect of a good or service that generates benefits or costs to someone other than the person deciding how much to produce or consume"
+  },
+  {
+    "head": "FAANG Stocks",
+    "text": "Facebook, Amazon, Apple, Netflix, Google"
+  },
+  {
+    "head": "Factors of Production",
+    "text": "Land, labor, and capital; the three groups of resources that are used to make all goods and services"
+  },
+  {
+    "head": "Feasibility Study",
+    "text": "investigation that gauges the probability of success of a proposed project and provides a rough assessment of the project's feasibility"
+  },
+  {
+    "head": "Fiat Money",
+    "text": "money that has value because the government has ordered that it is an acceptable means to pay debts"
+  },
+  {
+    "head": "Fiduciary",
+    "text": "relating to the governing of property or estate on behalf of others"
+  },
+  {
+    "head": "Finance",
+    "text": "management of money"
+  },
+  {
+    "head": "Financial Institution (FI)",
+    "text": "An organization that provides some type of financial services to the public. A commercial bank is the most common type."
+  },
+  {
+    "head": "Financial Statements",
+    "text": "periodic reports published by the company for the purpose of providing information to external users"
+  },
+  {
+    "head": "Fintech",
+    "text": "used to describe new technology that seeks to improve and automate the delivery and use of financial services"
+  },
+  {
+    "head": "Fiscal Policy",
+    "text": "Government policy that attempts to manage the economy by controlling taxing and spending."
+  },
+  {
+    "head": "Fixed Income",
+    "text": "income that does not increase even when prices go up"
+  },
+  {
+    "head": "Fixed-Income Security",
+    "text": "An investment that provides a return in the form of fixed periodic payments and the eventual return of principal at maturity"
+  },
+  {
+    "head": "Four Ps",
+    "text": "Product, Price, Place, Promotion"
+  },
+  {
+    "head": "Free Market",
+    "text": "An economic system in which prices and wages are determined by unrestricted competition between businesses, without government regulation or fear of monopolies."
+  },
+  {
+    "head": "Free Trade",
+    "text": "international trade free of government interference"
+  },
+  {
+    "head": "Fringe Benefits",
+    "text": "Additional employee benefits paid for by the employer"
+  },
+  {
+    "head": "Futures",
+    "text": "contracts to buy or sell at a specific date in the future at a price specified today"
+  },
+  {
+    "head": "Game Theory",
+    "text": "the study of how people behave in strategic situations"
+  },
+  {
+    "head": "Gamma",
+    "text": "<div class=\"PMDocument\"><p>the rate of change in an option's <span style=\"text-decoration:underline\">delta</span> per 1-point move in the underlying asset's price.  An important measure of the convexity of a <span style=\"text-decoration:underline\">derivative's</span> value, in relation to the underlying.</p></div>"
+  },
+  {
+    "head": "General Agreement on Tariffs and Trade (GATT)",
+    "text": "International treaty that committed signatories to lowering barriers to the free flow of goods across national borders and led to the WTO"
+  },
+  {
+    "head": "General Data Protection Regulation (GDPR)",
+    "text": "Mandates a baseline set of standards for companies that handle EU citizens' data to better safeguard the processing and movement of citizens' personal data"
+  },
+  {
+    "head": "General Ledger",
+    "text": "A financial document that contains all asset, liability, stockholders' equity, revenue, and expense accounts."
+  },
+  {
+    "head": "Generally Accepted Accounting Principles (GAAP)",
+    "text": "the rules of financial accounting"
+  },
+  {
+    "head": "Generation X (Gen X)",
+    "text": "generational cohort of people born between 1965 and 1976"
+  },
+  {
+    "head": "Giffen Good",
+    "text": "a good for which an increase in the price raises the quantity demanded"
+  },
+  {
+    "head": "Gini Index",
+    "text": "a mathematical formula that measures the amount of economic inequality in a society"
+  },
+  {
+    "head": "Globalization",
+    "text": "the process by which businesses or other organizations develop international influence or start operating on an international scale."
+  },
+  {
+    "head": "Goodwill",
+    "text": "the value of all favorable attributes that relate to a company that are not attributable to any other specific asset"
+  },
+  {
+    "head": "Government Bond",
+    "text": "the written pledge of a government or a municipality, such as a city, to repay a specific sum of money with interest"
+  },
+  {
+    "head": "Government Shutdown",
+    "text": "the closure of nonessential offices of the government due to lack of approval on the federal budget for the upcoming fiscal year"
+  },
+  {
+    "head": "Great Depression",
+    "text": "the economic crisis beginning with the stock market crash in 1929 and continuing through the 1930s"
+  },
+  {
+    "head": "Gross Domestic Product (GDP)",
+    "text": "The sum total of the value of all the goods and services produced in a nation"
+  },
+  {
+    "head": "Gross Income",
+    "text": "the total amount of income from wages before any payroll deductions"
+  },
+  {
+    "head": "Gross Margin",
+    "text": "the amount of money the retailer makes as a percentage of sales after the cost of goods sold is subtracted"
+  },
+  {
+    "head": "Gross National Product (GNP)",
+    "text": "The total value of goods and services, including income received from abroad, produced by the residents of a country within a specific time period, usually one year."
+  },
+  {
+    "head": "Gross Profit",
+    "text": "net sales - cost of goods sold"
+  },
+  {
+    "head": "Gross Profit Margin",
+    "text": "Gross Profit/Sales"
+  },
+  {
+    "head": "Guarantor",
+    "text": "someone who guarantees to pay back the money if the borrower does not"
+  },
+  {
+    "head": "Hard Skills",
+    "text": "technical expertise and knowledge to do a particular task or job function"
+  },
+  {
+    "head": "Harmonic Mean",
+    "text": "A type of weighted mean computed by averaging the reciprocals of the observations, then taking the reciprocal of that average."
+  },
+  {
+    "head": "Head And Shoulders Pattern",
+    "text": "In technical analysis, a reversal pattern that is formed in three parts: a left shoulder, head, and right shoulder; used to predict a change from an uptrend to a downtrend."
+  },
+  {
+    "head": "Hedge",
+    "text": "Avoid commitment by leaving provisions for withdrawal or changing one's mind; protect a bet by also betting on the other side"
+  },
+  {
+    "head": "Hedge Fund",
+    "text": "a limited partnership of investors that uses high risk methods, such as investing with borrowed money, in hopes of realizing large capital gains."
+  },
+  {
+    "head": "Heteroskedasticity",
+    "text": "When the variance of residuals is not the same across all observations in a sample"
+  },
+  {
+    "head": "High-Low Method",
+    "text": "A mathematical method that uses the total costs incurred at the high and low levels of activity to classify mixed costs into fixed and variable components."
+  },
+  {
+    "head": "High-Net-Worth Individual (HNWI)",
+    "text": "A person who has a lot of assets"
+  },
+  {
+    "head": "Holding Company",
+    "text": "a company whose primary business is owning a controlling share of stock in other companies"
+  },
+  {
+    "head": "Home Equity Loan",
+    "text": "a loan secured by equity value in the borrower's home"
+  },
+  {
+    "head": "Homeowners Association (HOA)",
+    "text": "A nonprofit association of homeowners organized pursuant to a declaration of restrictions of protective covenants for a subdivision, PUD, or condominium."
+  },
+  {
+    "head": "Homestead Exemption",
+    "text": "a state law that gives homeowners a tax break for property that is their primary residence"
+  },
+  {
+    "head": "Horizontal Integration",
+    "text": "Absorption into a single firm of several firms involved in the same level of production and sharing resources at that level"
+  },
+  {
+    "head": "hostile takeover",
+    "text": "the acquisition of a company over the opposition of its management"
+  },
+  {
+    "head": "Housing Bubble",
+    "text": "a rapid increase in the value of houses followed by a sharp decline in their value"
+  },
+  {
+    "head": "Human Capital",
+    "text": "the knowledge and skills a worker gains through education and experience"
+  },
+  {
+    "head": "Hurdle Rate",
+    "text": "minimum acceptable rate of return"
+  },
+  {
+    "head": "Hyperinflation",
+    "text": "A very rapid rise in the price level"
+  },
+  {
+    "head": "Hypothesis Testing",
+    "text": "make and test an educated guess about a problem/solution"
+  },
+  {
+    "head": "Income",
+    "text": "money received, especially on a regular basis, for work or through investments."
+  },
+  {
+    "head": "Income Statement",
+    "text": "A financial statement showing the revenue and expenses for a fiscal period."
+  },
+  {
+    "head": "Indemnity",
+    "text": "a payment for damage or loss"
+  },
+  {
+    "head": "Index Fund",
+    "text": "A mutual fund that was designed to reduce fees by investing in the stocks and bonds"
+  },
+  {
+    "head": "Industrial Revolution",
+    "text": "the transformation from an agricultural to an industrial nation"
+  },
+  {
+    "head": "Inferior Good",
+    "text": "a good for which, other things equal, an increase in income leads to a decrease in demand"
+  },
+  {
+    "head": "Inflation",
+    "text": "A general and progressive increase in prices"
+  },
+  {
+    "head": "Initial Public Offerings (IPOs)",
+    "text": "first sale of a company's stock to the general public"
+  },
+  {
+    "head": "Insider Trading",
+    "text": "illegal practice of using special knowledge about a firm for profit or gain"
+  },
+  {
+    "head": "Insurance",
+    "text": "protection against possible financial loss"
+  },
+  {
+    "head": "Insurance Premium",
+    "text": "The amount you pay for an insurance policy"
+  },
+  {
+    "head": "Interest Coverage Ratio",
+    "text": "Financial ratio showing a company's ability to pay interest on its debts from its operating income."
+  },
+  {
+    "head": "Interest Rate",
+    "text": "Percentage of amount borrowed to be added to the amount loaned and paid back"
+  },
+  {
+    "head": "International Financial Reporting Standards (IFRS)",
+    "text": "Accounting standards, issued by the IASB, that have been adopted by many countries outside of the United States."
+  },
+  {
+    "head": "International Monetary Fund (IMF)",
+    "text": "International institution set up to maintain order in the international monetary system"
+  },
+  {
+    "head": "Interpersonal Skills",
+    "text": "the ability to deal effectively with other people"
+  },
+  {
+    "head": "Inventory Turnover",
+    "text": "cost of goods sold/average inventory"
+  },
+  {
+    "head": "Inverted Yield Curve",
+    "text": "a yield curve that is downward sloping"
+  },
+  {
+    "head": "Invisible Hand",
+    "text": "term economists use to describe the self-regulating nature of the marketplace"
+  },
+  {
+    "head": "Irrevocable Trust",
+    "text": "a trust that cannot be altered or ended by its creator"
+  },
+  {
+    "head": "J-Curve",
+    "text": "a growth curve that depicts exponential growth"
+  },
+  {
+    "head": "January Effect",
+    "text": "Tendency for small stocks to have large returns in the beginning of the year."
+  },
+  {
+    "head": "Jensen's Measure",
+    "text": "A risk-adjusted performance measure that represents the average return on a portfolio over and above that predicted by the capital asset pricing model (CAPM), given the portfolio's beta and the average market return."
+  },
+  {
+    "head": "Job Market",
+    "text": "the need for workers and the kinds of work available to them"
+  },
+  {
+    "head": "John Maynard Keynes",
+    "text": "British economist whose theories helped justify New Deal deficit spending"
+  },
+  {
+    "head": "Joint and Several Liability",
+    "text": "A legal concept that makes each partner in a partnership legally liable for all the debts of the partnership."
+  },
+  {
+    "head": "Joint Probability",
+    "text": "the probability of two events occurring together"
+  },
+  {
+    "head": "Joint-Stock Company",
+    "text": "A company made up of a group of shareholders. Each shareholder contributes some money to the company and receives some share of the company's profits and debts."
+  },
+  {
+    "head": "Joint Tenancy",
+    "text": "A form of concurrent ownership, which occurs when two or more persons own a single estate in land, with right of survivorship. Must have equal shares, right to partition."
+  },
+  {
+    "head": "Joint Venture (JV)",
+    "text": "A new corporate entity created and jointly owned by two or more parent companies."
+  },
+  {
+    "head": "Joseph Schumpeter",
+    "text": "Originator of the concept of creative destruction"
+  },
+  {
+    "head": "Journal",
+    "text": "a periodical that publishes technical and scholarly material, usually in a narrowly defined area of inquiry"
+  },
+  {
+    "head": "Junk Bond",
+    "text": "a bond with high risk and potentially high yield"
+  },
+  {
+    "head": "Just In Case (JIC)",
+    "text": "A situation where a company keeps a small stock of components (or complete items) or ones that take a long time to make, on the possibility of a rush order."
+  },
+  {
+    "head": "Just In Time (JIT)",
+    "text": "A system that calls for subassemblies and components to be manufactured in very small lots and delivered to the next stage of the production process just as they are needed."
+  },
+  {
+    "head": "Kaizen",
+    "text": "Japanese term for continuous improvement"
+  },
+  {
+    "head": "Karl Marx",
+    "text": "1818-1883. 19th century philosopher, political economist, sociologist, humanist, political theorist, and revolutionary. Often recognized as the father of communism. Analysis of history led to his belief that communism would replace capitalism as it replaced feudalism. Believed in a classless society."
+  },
+  {
+    "head": "Key Performance Indicators (KPI)",
+    "text": "The quantifiable metrics a company uses to evaluate progress toward critical success factors"
+  },
+  {
+    "head": "Key Person Insurance",
+    "text": "protects against the loss of a key employee or key executive by making the business the beneficiary if a key person dies. The business is the owner, premium payor, and beneficiary."
+  },
+  {
+    "head": "Key Rate Duration",
+    "text": "A method of measuring the interest rate sensitivities of a fixed-income instrument or portfolio to shifts in key points along the yield curve."
+  },
+  {
+    "head": "Keynesian Economics",
+    "text": "a form of demand-side economics that encourages government action to increase or decrease demand and output"
+  },
+  {
+    "head": "Kickback",
+    "text": "Illegal sharing of a commission with seller"
+  },
+  {
+    "head": "Kiosk",
+    "text": "A small structure used as a newsstand, bandstand, etc."
+  },
+  {
+    "head": "Kiting",
+    "text": "A fraudulent cash scheme to overstate cash assets at year end by showing the same cash in two different bank accounts using an interbank transfer."
+  },
+  {
+    "head": "Knock-In Option",
+    "text": "An option that becomes active if and only if the underlying asset reaches a prespecified barrier"
+  },
+  {
+    "head": "Knock-Out Option",
+    "text": "An option with a built in mechanism to expire worthless, should a specified price level be exceeded."
+  },
+  {
+    "head": "Know Sure Thing (KST)",
+    "text": "A two-line indicator used determine momentum in stock trends. As an oscillator it fluctuates above and below zero, providing trade signals and analytical insight based on divergence with price and KST and signal Line crossovers."
+  },
+  {
+    "head": "Know Your Client (KYC)",
+    "text": "A standard form in the investment industry that ensures investment advisors know detailed information about their clients' risk tolerance, investment knowledge and financial position."
+  },
+  {
+    "head": "Knowledge Economy",
+    "text": "a society no longer based primarily on the production of material goods but instead on the production of knowledge"
+  },
+  {
+    "head": "Knowledge Process Outsourcing (KPO)",
+    "text": "an approach where an organization chooses to have some of its functions and activities related to research and acquisition of knowledge performed by an external organization"
+  },
+  {
+    "head": "Kurtosis",
+    "text": "how flat or peaked a normal distribution is"
+  },
+  {
+    "head": "The Kyoto Protocol",
+    "text": "controlling global warming by setting greenhouse gas emissions targets for developed countries"
+  },
+  {
+    "head": "Laissez-Faire",
+    "text": "Idea that government should play as small a role as possible in economic affairs."
+  },
+  {
+    "head": "Law of Demand",
+    "text": "consumers buy more of a good when its price decreases and less when its price increases"
+  },
+  {
+    "head": "Law of Supply",
+    "text": "producers offer more of a good as its price increases and less as its price falls"
+  },
+  {
+    "head": "Law of Supply and Demand",
+    "text": "Economic principle which states that the supply of a good or service will increase when demand is great and decrease when demand is low"
+  },
+  {
+    "head": "Leadership",
+    "text": "the ability to motivate individuals and groups to accomplish important goals"
+  },
+  {
+    "head": "Letter of Intent (LOI)",
+    "text": "Generally an agreement to agree. It outlines the terms between parties who have not formalized an agreement into a contract. LOIs are generally not binding and unenforceable."
+  },
+  {
+    "head": "Letters of Credit",
+    "text": "eliminated the need to carry large amounts of cash and made trading easier"
+  },
+  {
+    "head": "Leverage",
+    "text": "the use of borrowed money to supplement existing funds for purposes of investment"
+  },
+  {
+    "head": "Leverage Ratio",
+    "text": "the ratio of assets to bank capital"
+  },
+  {
+    "head": "Leveraged Buyout (LBO)",
+    "text": "Acquisition of a company's publicly traded stock, using funds that are primarily borrowed, usually with the intent of using some of the acquired assets to pay back the loans used to acquire the company"
+  },
+  {
+    "head": "Liability",
+    "text": "An amount owed by a business"
+  },
+  {
+    "head": "Liability Insurance",
+    "text": "insurance that provides protection from claims arising from injuries or damage to other people or property"
+  },
+  {
+    "head": "Limit Order",
+    "text": "an order to a broker to buy a specific stock only if its price is below a certain level, or to sell a specific stock only if its price is above a certain level"
+  },
+  {
+    "head": "Limited Liability Company (LLC)",
+    "text": "a form of business ownership that protects private assets of an entrepreneur"
+  },
+  {
+    "head": "Limited Partnership (LP)",
+    "text": "An association of two or more partners formed to conduct a business jointly and in which one or more of the partners is liable only to the extent of the amount of money they have invested."
+  },
+  {
+    "head": "Liquidation",
+    "text": "occurs when a business closes and sells its assets to pay creditors"
+  },
+  {
+    "head": "Liquidity",
+    "text": "Availability of resources to meet short-term cash requirements."
+  },
+  {
+    "head": "Loan-To-Value Ratio (LTV)",
+    "text": "The relationship between the amount of the mortgage loan and the value of the real estate being pledged as collateral."
+  },
+  {
+    "head": "Ltd. (Limited)",
+    "text": "roughly the same as \"GmbH\". Shares are not traded on the stock market."
+  },
+  {
+    "head": "Macroeconomics",
+    "text": "the study of economy-wide phenomena, including inflation, unemployment, and economic growth"
+  },
+  {
+    "head": "Magna Cum Laude",
+    "text": "with high honors"
+  },
+  {
+    "head": "Management by Objectives (MBO)",
+    "text": "a program that encompasses specific goals, participatively set, for an explicit time period, with feedback on goal progress"
+  },
+  {
+    "head": "Margin",
+    "text": "the difference between the value that an activity generates and the cost of the activity"
+  },
+  {
+    "head": "Market Share",
+    "text": "a company's product sales as a percentage of total sales for that industry"
+  },
+  {
+    "head": "Marketing",
+    "text": "the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large"
+  },
+  {
+    "head": "Marketing Strategy",
+    "text": "the activities of selecting and describing one or more target markets and developing and maintaining a marketing mix that will produce mutually satisfying exchanges with target markets"
+  },
+  {
+    "head": "Memorandum of Understanding (MOU)",
+    "text": "An agreement between two or more parties to enable them to work together that is not legally enforceable but is more formal than an unwritten agreement."
+  },
+  {
+    "head": "Mercantilism",
+    "text": "An economic policy under which nations sought to increase their wealth and power by obtaining large amounts of gold and silver and by selling more goods than they bought"
+  },
+  {
+    "head": "Mergers and Acquisitions (M&amp;A)",
+    "text": "Combination of two separate firms either by their joining together as relative equals or by one acquiring the other"
+  },
+  {
+    "head": "Milton Friedman",
+    "text": "He was a famous American economist. He strongly promoted the idea of free trade and condemned government regulation and socialism."
+  },
+  {
+    "head": "Mixed Economic System",
+    "text": "A system in which economic decisions are made by individuals, businesses, and government."
+  },
+  {
+    "head": "Monetary Policy",
+    "text": "Government policy that attempts to manage the economy by controlling the money supply and thus interest rates."
+  },
+  {
+    "head": "Money Laundering",
+    "text": "When illegally obtained money is put into or through a business to hide its origin"
+  },
+  {
+    "head": "Monopolistic Competition",
+    "text": "a market structure in which many firms sell products that are similar but not identical"
+  },
+  {
+    "head": "Monte Carlo Simulation",
+    "text": "A process which generates hundreds or thousands of probable performance outcomes based on probability distributions for cost and schedule on individual tasks. The outcomes are then used to generate a probability distribution for the project as a whole."
+  },
+  {
+    "head": "Moore's Law",
+    "text": "The number of transistors per square inch on an integrated chip doubles every 18 months"
+  },
+  {
+    "head": "Multilevel Marketing",
+    "text": "involves hiring independent contractors to sell products to their personal network of friends and colleagues and to recruit new salespeople in return for a percentage of their commissions"
+  },
+  {
+    "head": "Mutual Fund",
+    "text": "pools the savings of many individuals and invests this money in a variety of stocks, bonds, and other financial assets"
+  },
+  {
+    "head": "Mutually Exclusive",
+    "text": "Two events that cannot occur at the same time"
+  },
+  {
+    "head": "Nasdaq",
+    "text": "American market for OTC securities"
+  },
+  {
+    "head": "Nash Equilibrium",
+    "text": "a situation in which economic actors interacting with one another each choose their best strategy given the strategies that all the other actors have chosen"
+  },
+  {
+    "head": "Negative Correlation",
+    "text": "as one variable increases, the other decreases"
+  },
+  {
+    "head": "Neoliberalism",
+    "text": "a modified form of liberalism tending to favor free-market capitalism."
+  },
+  {
+    "head": "Net Income (NI)",
+    "text": "A company's total earnings, also called net profit or the \"bottom line.\" Calculated by subtracting totally expenses from total revenues."
+  },
+  {
+    "head": "Net Operating Income (NOI)",
+    "text": "The income projected for an income-producing property after deducting losses for vacancy and collection and operating expenses."
+  },
+  {
+    "head": "Net Present Value (NPV)",
+    "text": "the difference between an investment's market value and its cost"
+  },
+  {
+    "head": "Net Profit Margin",
+    "text": "Net Income/Sales"
+  },
+  {
+    "head": "Net Worth",
+    "text": "total assets minus total liabilities"
+  },
+  {
+    "head": "Network Marketing",
+    "text": "Personal selling that relies on lists of family members and friends of a salesperson, who organizes gatherings of potential customers for an in-home presentation of selected products."
+  },
+  {
+    "head": "Networking",
+    "text": "interact with other people to exchange information and develop contacts, especially to further one's career."
+  },
+  {
+    "head": "New York Stock Exchange (NYSE)",
+    "text": "A physical trading floor and a computer network where stocks are bought and sold. It is the largest stock exchange in the world"
+  },
+  {
+    "head": "Next of Kin",
+    "text": "closest relative"
+  },
+  {
+    "head": "NINJA Loan",
+    "text": "a loan extended to a borrower with no income, no job and no assets."
+  },
+  {
+    "head": "Nominal",
+    "text": "existing in name only, not real; too small to be considered or taken seriously"
+  },
+  {
+    "head": "Non-Disclosure Agreement (NDA)",
+    "text": "a legal contract between at least two parties that outlines confidential material, knowledge, or information that the parties wish to share with one another for certain purposes but wish to restrict access to or by third parties"
+  },
+  {
+    "head": "Normal Distribution",
+    "text": "A function that represents the distribution of variables as a symmetrical bell-shaped graph."
+  },
+  {
+    "head": "North American Free Trade Agreement (NAFTA)",
+    "text": "Agreement that created a free-trade area among the United States, Canada, and Mexico."
+  },
+  {
+    "head": "Not for Profit",
+    "text": "type of business organization that typically uses revenue for charitable or religious purposes"
+  },
+  {
+    "head": "Notional Value",
+    "text": "The amount used to calculate gains and losses on a contract."
+  },
+  {
+    "head": "Null Hypothesis",
+    "text": "a statement or idea that can be falsified, or proved wrong"
+  },
+  {
+    "head": "Offset",
+    "text": "to balance, counteract or compensate for"
+  },
+  {
+    "head": "Oligopoly",
+    "text": "A market structure in which a few large firms dominate a market"
+  },
+  {
+    "head": "Onerous Contract",
+    "text": "A contract is onerous when each of the parties obtains an advantage in exchange for their obligation."
+  },
+  {
+    "head": "Online Banking",
+    "text": "Allows customers to complete certain transactions from a secured Internet site by using a username and password from any place in the world with Internet access"
+  },
+  {
+    "head": "Operating Income",
+    "text": "gross profit minus operating expenses"
+  },
+  {
+    "head": "Operating Leverage",
+    "text": "the relative amount of fixed and variable costs that make up a firm's total costs"
+  },
+  {
+    "head": "Operating Margin",
+    "text": "operating income/sales"
+  },
+  {
+    "head": "Operations Management",
+    "text": "The management of systems or processes that create goods and/or provide services"
+  },
+  {
+    "head": "Opportunity Cost",
+    "text": "whatever must be given up to obtain some item"
+  },
+  {
+    "head": "Option",
+    "text": "<div class=\"PMDocument\"><p><span style=\"text-decoration:underline\">financial instruments</span> that are <span style=\"text-decoration:underline\">derivatives</span> based on the value of underlying securities such as stocks. Offers the buyer the opportunity to buy or sell—depending on the type of contract they hold—the underlying asset.</p></div>"
+  },
+  {
+    "head": "Organizational Behavior (OB)",
+    "text": "a field of study devoted to understanding, explaining, and ultimately improving the attitudes and behaviors of individuals and groups in organizations"
+  },
+  {
+    "head": "Organizational Structure",
+    "text": "the ways in which power and authority are distributed within an organization"
+  },
+  {
+    "head": "Original Equipment Manufacturer (OEM)",
+    "text": "A company that assembles and manufactures a product into its final form."
+  },
+  {
+    "head": "Outsourcing",
+    "text": "A decision by a corporation to turn over much of the responsibility for production to independent suppliers."
+  },
+  {
+    "head": "Over-The-Counter (OTC)",
+    "text": "Drugs that are approved for purchase without a prescription."
+  },
+  {
+    "head": "Overdraft",
+    "text": "Occurs when money is withdrawn from a bank account and the available balance goes below zero"
+  },
+  {
+    "head": "Overhead",
+    "text": "broad category of fixed costs that includes interest, rent, taxes, and salaries"
+  },
+  {
+    "head": "P-Value",
+    "text": "The probability of results of the experiment being attributed to chance."
+  },
+  {
+    "head": "Partnership",
+    "text": "A business in which two or more persons combine their assets and skills"
+  },
+  {
+    "head": "Penny Stocks",
+    "text": "low-priced stocks of small companies that have no track record"
+  },
+  {
+    "head": "Per Capita GDP",
+    "text": "the GDP divided by the total population at midyear"
+  },
+  {
+    "head": "Perfect Competition",
+    "text": "the degree of competition in which there are many sellers in a market and none is large enough to dictate the price of a product"
+  },
+  {
+    "head": "Personal Finance",
+    "text": "All of the decisions and activities of an individual or family regarding their money, including spending, saving, budgeting, etc."
+  },
+  {
+    "head": "Phillips Curve",
+    "text": "a curve that shows the short-run tradeoff between inflation and unemployment"
+  },
+  {
+    "head": "Ponzi Scheme",
+    "text": "a form of fraud in which belief in the success of a nonexistent enterprise is fostered by the payment of quick returns to the first investors from money invested by later investors."
+  },
+  {
+    "head": "Porter's 5 Forces",
+    "text": "*Rivalry among competitors;<br>*Threat of new entrants; <br>*Threat of substitute products;<br>*Bargaining power of buyers;<br>*Bargaining power of suppliers;"
+  },
+  {
+    "head": "Positive Correlation",
+    "text": "A correlation where as one variable increases, the other also increases, or as one decreases so does the other. Both variables move in the same direction."
+  },
+  {
+    "head": "Pre-Market",
+    "text": "preparations and tasks to prepare for market"
+  },
+  {
+    "head": "Preference Shares",
+    "text": "stock whose holders are guaranteed priority in the payment of dividends but whose holders have no voting rights"
+  },
+  {
+    "head": "Preferred Stock",
+    "text": "A special type of stock whose owners, though not generally having a say in running the company, have a claim to profits before other stockholders do."
+  },
+  {
+    "head": "Present Value",
+    "text": "the amount of money you would need to deposit now in order to have a desired amount in the future"
+  },
+  {
+    "head": "Price-to-Earnings Ratio (P/E Ratio)",
+    "text": "How much a stock costs relative to how much the company earns per share of stock; calculated by dividing the stock price by the company's earnings per share"
+  },
+  {
+    "head": "Pro Rata",
+    "text": "To charge at a proportional rate"
+  },
+  {
+    "head": "Producer Price Index (PPI)",
+    "text": "An index that measures prices at the wholesale level."
+  },
+  {
+    "head": "Profit",
+    "text": "total revenue minus total cost"
+  },
+  {
+    "head": "Profit and Loss Statement (P&amp;L)",
+    "text": "A financial report that details a company's performance over a specific period of time by subtracting expenses from revenue to obtain net income; also known as an income statement."
+  },
+  {
+    "head": "Promissory Note",
+    "text": "a written and signed promise to pay a sum of money at a specified time"
+  },
+  {
+    "head": "Prospectus",
+    "text": "document issued to possible buyers of a stocks and bonds outlining the financial condition of the company issuing those securities"
+  },
+  {
+    "head": "Public Limited Company (PLC)",
+    "text": "Often a large company, owned by shareholders who have limited liability. The company can sell its shares to the general public."
+  },
+  {
+    "head": "Put Option",
+    "text": "the option to sell shares of stock at a specified time in the future"
+  },
+  {
+    "head": "Qualified Dividend",
+    "text": "A dividend that qualifies for a lower tax rate vs. ordinary income"
+  },
+  {
+    "head": "Qualified Opinion",
+    "text": "a report issued when the auditor believes that the overall financial statements are fairly stated but that either the scope of the audit was limited or the financial data indicated a failure to follow GAAP"
+  },
+  {
+    "head": "Qualitative Analysis",
+    "text": "Based on research that uses open-ended interviewing to explore and understand attitudes, opinions, feelings, and behavior."
+  },
+  {
+    "head": "Quality Control",
+    "text": "the strategy for minimizing errors by managing each stage of production"
+  },
+  {
+    "head": "Quality of Earnings",
+    "text": "the realism and sustainability of reported earnings"
+  },
+  {
+    "head": "Quality Management",
+    "text": "organization wide quality focus"
+  },
+  {
+    "head": "quantitative analysis",
+    "text": "Taking physical measurements and making mathematical computations to reach a conclusion"
+  },
+  {
+    "head": "Quantitative Easing",
+    "text": "the introduction of new money into the money supply by a central bank."
+  },
+  {
+    "head": "Quantity Demanded",
+    "text": "the amount of a good that buyers are willing and able to purchase"
+  },
+  {
+    "head": "Quarter (Q1, Q2, Q3, Q4)",
+    "text": "A three-month period on a financial calendar that acts as a basis for the reporting of earnings and the paying of dividends."
+  },
+  {
+    "head": "Quarter on Quarter (QOQ)",
+    "text": "A measuring technique that calculates the change between one financial quarter and the previous financial quarter"
+  },
+  {
+    "head": "Quasi Contract",
+    "text": "An obligation or contract imposed by law (a court), in the absence of an agreement, to prevent the unjust enrichment of one party."
+  },
+  {
+    "head": "Quick Assets",
+    "text": "Cash and other current assets that can be quickly converted to cash, such as marketable securities and receivables."
+  },
+  {
+    "head": "Quick Ratio",
+    "text": "(Current Assets - Inventories) / Current Liabilities"
+  },
+  {
+    "head": "Quintiles",
+    "text": "dividing a group into fifths, a method often used to look at distribution of income"
+  },
+  {
+    "head": "Quota",
+    "text": "a limited or fixed number or amount of people or things, in particular."
+  },
+  {
+    "head": "Racketeering",
+    "text": "the criminal action of being involved in an organized effort to engage in illegal business transactions"
+  },
+  {
+    "head": "Rate of Return",
+    "text": "the percentage of increase in the value of your savings from earned interest"
+  },
+  {
+    "head": "Rational Choice Theory",
+    "text": "the classical view that we make decisions by determining how likely something is to happen, judging the value of the outcome, and then multiplying the two"
+  },
+  {
+    "head": "Real Estate",
+    "text": "Property such as land, houses and office buildings."
+  },
+  {
+    "head": "Receivables Turnover Ratio",
+    "text": "Number of times during a year that the average accounts receivable balance is collected. It equals net credit sales divided by average accounts receivable."
+  },
+  {
+    "head": "Regression",
+    "text": "return to an earlier or less advanced condition"
+  },
+  {
+    "head": "Relative Strength Index (RSI)",
+    "text": "Shows how strongly a stock is moving in its current direction."
+  },
+  {
+    "head": "Renewable Resource",
+    "text": "Something produced in nature more rapidly than it is consumed by humans"
+  },
+  {
+    "head": "Repurchase Agreement (Repo)",
+    "text": "a short-term collateralized loan in which a security is exchanged for cash, with the agreement that the parties will reverse the transaction on a specific future date, as soon as the next day"
+  },
+  {
+    "head": "Requests for Proposal (RFP)",
+    "text": "a form developed by firms and distributed to qualified potential suppliers that helps suppliers develop and submit proposals to provide products as specified by the firm"
+  },
+  {
+    "head": "Retained Earnings",
+    "text": "An amount earned by a corporation and not yet distributed to stockholders."
+  },
+  {
+    "head": "Return on Assets (ROA)",
+    "text": "Measures how profitably a company uses its assets. Net income / Average total assets."
+  },
+  {
+    "head": "Return on Investment (ROI)",
+    "text": "the direct financial impact of a firm's expenditure of a resource, such as time or money"
+  },
+  {
+    "head": "Rule of 72",
+    "text": "The number of years it takes for a certain amount to double in value is equal to 72 divided by its annual rate of interest."
+  },
+  {
+    "head": "S&amp;P 500 Index",
+    "text": "an indicator of overall stock market performance based on the average stock prices of 500 top U.S. companies, compiled by Standard &amp; Poor's"
+  },
+  {
+    "head": "Securities and Exchange Commission (SEC)",
+    "text": "monitors the stock market and enforces laws regulating the sale of stocks and bonds"
+  },
+  {
+    "head": "Securities",
+    "text": "All of the investments, including stocks, bonds, mutual funds, options, and commodities, that are traded."
+  },
+  {
+    "head": "Sharpe Ratio",
+    "text": "Reward-to-volatility ratio; ratio of portfolio excess return to standard deviation."
+  },
+  {
+    "head": "Short Selling",
+    "text": "selling stock borrowed from a broker that must be replaced at a later time"
+  },
+  {
+    "head": "Social Media",
+    "text": "websites and applications that enable users to create and share content or to participate in social networking."
+  },
+  {
+    "head": "Social Responsibility",
+    "text": "the duty of a business to contribute to the well-being of a community"
+  },
+  {
+    "head": "Solvency Ratio",
+    "text": "total net worth divided by total assets; measures the degree of exposure to insolvency"
+  },
+  {
+    "head": "Spread",
+    "text": "a numerical summary of how tightly the values are clustered around the \"center\""
+  },
+  {
+    "head": "Standard Deviation",
+    "text": "the square root of the variance"
+  },
+  {
+    "head": "Stock",
+    "text": "A share of ownership in a corporation."
+  },
+  {
+    "head": "Stock Market",
+    "text": "A system for buying and selling shares of companies"
+  },
+  {
+    "head": "Stop-Limit Order",
+    "text": "Order with instructions to buy or sell at a specified price or better but only after a given stop price has been reached or passed."
+  },
+  {
+    "head": "SWOT analysis",
+    "text": "a planning tool used to analyze an organization's strengths, weaknesses, opportunities, and threats"
+  },
+  {
+    "head": "Subsidiary",
+    "text": "a company that is completely controlled by another company"
+  },
+  {
+    "head": "Supply Chain",
+    "text": "the group of firms that make and deliver a given set of goods and services"
+  },
+  {
+    "head": "Sustainability",
+    "text": "The ability to keep in existence or maintain."
+  },
+  {
+    "head": "Tariff",
+    "text": "tax on imports"
+  },
+  {
+    "head": "Technical Analysis",
+    "text": "technique that uses charts of past trends in currency prices and other factors to forecast exchange rates"
+  },
+  {
+    "head": "Tenancy in Common (TIC)",
+    "text": "A parcel of real estate owned by two or more people. Each can sell/convey/mortgage/transfer. Upon death: to heirs."
+  },
+  {
+    "head": "Term Life Insurance",
+    "text": "Life insurance that pays a death benefit if the policyholder dies within a specific time period but has no remaining value at the end of this time."
+  },
+  {
+    "head": "Third World",
+    "text": "outdated term for nations outside the capitalist industrial nations of the first world and the industrialized communist nations of the second world; generally less economically powerful, but with varied economies."
+  },
+  {
+    "head": "Trade Deficit",
+    "text": "situation in which a country imports more than it exports"
+  },
+  {
+    "head": "Tranches",
+    "text": "different classes of securities that comprise a single bond issuance"
+  },
+  {
+    "head": "Transaction",
+    "text": "A business activity that changes assets, liabilities, or owner's equity"
+  },
+  {
+    "head": "Triple Bottom Line (TBL)",
+    "text": "The 3 ways that company sustainability is measured: Economic - the organization is self funding; Social - The organization makes the lives of affected individuals and communities better; and Environmental - The organization leaves no negative \"footprint\" on the land, air, water."
+  },
+  {
+    "head": "Trust",
+    "text": "A monopoly that controls goods and services, often in combinations that reduce competition."
+  },
+  {
+    "head": "Trust Fund",
+    "text": "account for avoiding inheritance tax"
+  },
+  {
+    "head": "Trustee",
+    "text": "An official who is expected to vote independently based on his or her judgment of the circumstances; one interpretation of the role of the legislator."
+  },
+  {
+    "head": "staff turnover",
+    "text": "the voluntary and involuntary permanent withdrawal from an organization"
+  },
+  {
+    "head": "turnover",
+    "text": "A business's total sales revenue."
+  },
+  {
+    "head": "Underlying Asset",
+    "text": "The commodity or financial instrument on which the futures contract is based."
+  },
+  {
+    "head": "Underwriter",
+    "text": "An insurer employee who evaluates applicants for insurance, selects those that are acceptable to the insurer, prices coverage, and determines policy terms and conditions."
+  },
+  {
+    "head": "Unearned Income",
+    "text": "money received from sources other than working"
+  },
+  {
+    "head": "Unemployment",
+    "text": "the number of people who are actively looking for work but aren't currently employed"
+  },
+  {
+    "head": "Unemployment Rate",
+    "text": "the percentage of the labor force that is out of work"
+  },
+  {
+    "head": "Unicorn",
+    "text": "A start-up company valued at more than a billion dollars, typically in the software or technology sector."
+  },
+  {
+    "head": "Unilateral Contract",
+    "text": "A contract that results when an offer can be accepted only by the offeree's performance."
+  },
+  {
+    "head": "United Nations (UN)",
+    "text": "An institution dedicated to promoting dialogue among countries with the goal of maintaining world peace."
+  },
+  {
+    "head": "Unlimited Liability",
+    "text": "requirement that an owner is personally and fully responsible for all losses and debts of a business"
+  },
+  {
+    "head": "Unsecured Loan",
+    "text": "a loan that doesn't require any collateral"
+  },
+  {
+    "head": "Upside",
+    "text": "the advantage of a situation"
+  },
+  {
+    "head": "Utilities",
+    "text": "A term used to reference electric, water, gas, and other services."
+  },
+  {
+    "head": "Valuation",
+    "text": "determination of a monetary value"
+  },
+  {
+    "head": "Value Chain",
+    "text": "The set of activities through which a product or service is created and delivered to customers."
+  },
+  {
+    "head": "Value Proposition",
+    "text": "the unique value that a product or service provides to its customers and how it is better than and different from those of competitors"
+  },
+  {
+    "head": "Value-Added Tax (VAT)",
+    "text": "A tax on increased value of the product at each stage of production and distribution rather than just at the point of sale."
+  },
+  {
+    "head": "Variability",
+    "text": "in a set of numbers, how widely dispersed the values are from each other and from the mean"
+  },
+  {
+    "head": "Variable Annuity",
+    "text": "pays a lifetime income, but the income payments vary depending on common stock prices"
+  },
+  {
+    "head": "Variable Cost",
+    "text": "a cost that rises or falls depending on how much is produced"
+  },
+  {
+    "head": "Variance",
+    "text": "standard deviation squared"
+  },
+  {
+    "head": "Velocity of Money",
+    "text": "the average number of times each dollar in the money supply is used to purchase goods and services included in GDP"
+  },
+  {
+    "head": "Venture Capital",
+    "text": "Money that is invested in new or emerging companies that are perceived as having great profit potential"
+  },
+  {
+    "head": "Vertical Analysis",
+    "text": "expresses each item in a financial statement as a percentage of the same base amount"
+  },
+  {
+    "head": "Vertical Integration",
+    "text": "Practice where a single entity controls the entire process of a product, from the raw materials to distribution"
+  },
+  {
+    "head": "Volatility",
+    "text": "Indicates how much and how quickly the value of an investment, market, or market sector changes."
+  },
+  {
+    "head": "Wall Street",
+    "text": "A street in New York City famous for being the location of the New York stock exchange"
+  },
+  {
+    "head": "Warrant",
+    "text": "A legal paper, issued by a court, giving police permission to make an arrest, seizure, or search."
+  },
+  {
+    "head": "Wealth Management",
+    "text": "a coordination of financial services for wealthier clients"
+  },
+  {
+    "head": "Wearable Technology",
+    "text": "Computing devices that are worn on various parts of the body."
+  },
+  {
+    "head": "White-Collar Crime",
+    "text": "crime committed by people of high social position in the course of their occupations"
+  },
+  {
+    "head": "White Paper",
+    "text": "In Britain and elsewhere, a government statement that outlines proposed legislation; the last stage before the submission of a formal bill."
+  },
+  {
+    "head": "Wire Fraud",
+    "text": "any electronic communication involved in illegal activities"
+  },
+  {
+    "head": "Wire Transfers",
+    "text": "moving of electronic funds"
+  },
+  {
+    "head": "Working Capital",
+    "text": "current assets - current liabilities"
+  },
+  {
+    "head": "XML (Extensible Markup Language)",
+    "text": "designed to carry data instead of indicating how to display it."
+  },
+  {
+    "head": "end-of-year bonus",
+    "text": "money received annually for good performance"
+  },
+  {
+    "head": "YTD",
+    "text": "beginning of the year to todays date"
+  },
+  {
+    "head": "Yield",
+    "text": "the annual rate of return on a bond if the bond were held to maturity"
+  },
+  {
+    "head": "Yuppie",
+    "text": "The slang term for a young urban professionals, and wealthy people, popularized in the 80s"
+  },
+  {
+    "head": "Zero Cost Collar",
+    "text": "A transaction in which a position in the underlying is protected by buying a put and selling a call with the premium from the sale of the call offsetting the premium from the purchase of the put."
+  },
+  {
+    "head": "Zero-Sum Game",
+    "text": "<div class=\"PMDocument\"><p>situation in <strong>game</strong> theory in which one person's gain is equivalent to another's loss, so the net change in wealth or benefit is <strong>nothing</strong>.</p></div>"
+  },
+  {
+    "head": "Zombies",
+    "text": "Computers that have been taken control by hackers"
+  },
+  {
+    "head": "Zoning",
+    "text": "A planning tool used to separate industry and business from residential neighborhoods."
+  }
+]
+  </script>
+  <script>
+    const Terms = document.querySelector('.terms');
+    let html = '';
+
+    words.forEach(e => {
+      html += `
+        <div class="word">
+          <div class="head">
+            ${e.head}
+          </div>
+          <div class="text">
+            ${e.text}
+          </div>
+        </div>
+      `
+    });
+    Terms.innerHTML = html;
+  </script>
+</body>
+</html>

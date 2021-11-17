@@ -1,38 +1,59 @@
-import styled, { keyframes } from 'styled-components';
-import {MousePosition} from '../utils/mousePosition';
-import svg1 from '../assets/1.svg';
-import svg2 from '../assets/2.svg';
-import svg3 from '../assets/3.svg';
-import triangle from '../assets/triangle.svg';
+import { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { MousePosition } from "../utils/mousePosition";
+import { MouseMove } from "../utils/mouseMove";
+
+interface MouseMovePos {
+  x: number;
+  y: number;
+}
+
+interface DotStyle {
+  pos: number;
+  size?: string;
+  orientation?: number;
+}
 
 export default function Planet() {
   const position = MousePosition();
+  const mouseMove = MouseMove();
+
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+  }, []);
 
   return (
     <Container>
-      <SVG3 />
-      <SVG2 />
-      <SVG1 />
+      <SVG3 x={mouseMove.x} y={mouseMove.y} />
+      <SVG2 x={mouseMove.x} y={mouseMove.y} />
+      <SVG1 x={mouseMove.x} y={mouseMove.y} />
 
-      <Dots>
-        <Dot pos="1%" orientation={42}></Dot>
-        <Dot pos="11%" size="small" orientation={6}></Dot>
-        <Dot pos="2%" size="large" orientation={132}></Dot>
-        <Dot pos="15%" size="mid" orientation={293}></Dot>
-        <Dot pos="4%" orientation={133}></Dot>
-        <Dot pos="12%" size="mid" orientation={205}></Dot>
-        <Dot pos="2%" size="large" orientation={145}></Dot>
+      <Dots x={mouseMove.x} y={mouseMove.y}>
+        <Circle
+          pos={5}
+          size="small"
+          orientation={6}
+        />
+        <Circle
+          pos={10}
+          size="large"
+          orientation={132}
+        />
+        <Circle
+          pos={18}
+          size="mid"
+          orientation={293}
+        />
+        <Circle 
+          pos={10} 
+          orientation={133} 
+        />
       </Dots>
       {/* <Div>
         {position.x}:{position.y}
       </Div> */}
     </Container>
   );
-}
-interface DotStyle {
-  pos?: string;
-  size?: string;
-  orientation?: number;
 }
 
 const Container = styled.div`
@@ -45,105 +66,152 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-const SVG1 = styled.div`
+const SVG1 = styled.div<MouseMovePos>`
   position: absolute;
-  background-image: url(${svg1});
-  background-repeat: no-repeat;
-  background-size: auto 350px;
-  background-position: center top;
 
-  top: 0;
+  background-color: ${(props) => props.theme.colors.raisinBlack};
+  border-radius: 100%;
+  max-width: 1300px;
+  height: 1200px;
 
-  height: 100%;
-  width: 100%;
+  top: -900px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  box-shadow: inset 0 -10px 0 #312e4f;
+  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+
+  @media only screen and (max-width: 1400px) {
+    height: 1100px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 600px;
+    top: -400px;
+  }
+  @media only screen and (max-width: 500px) {
+    height: 400px;
+    top: -250px;
+  }
 `;
 
-const SVG2 = styled.div`
+const SVG2 = styled.div<MouseMovePos>`
   position: absolute;
-  background-image: url(${svg2});
-  background-repeat: no-repeat;
-  background-size: auto 400px;
-  background-position: center top;
+  background-color: ${(props) => props.theme.colors.raisinBlackShade1};
+  border-radius: 100%;
 
-  top: 0;
+  max-width: ${1300 * 1.04}px;
+  height: ${1200 * 1.04}px;
+  top: -900px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
 
-  height: 100%;
-  width: 100%;
+  @media only screen and (max-width: 1400px) {
+    height: ${1100 * 1.04}px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: ${600 * 1.04}px;
+    top: -400px;
+  }
+  @media only screen and (max-width: 500px) {
+    height: ${400 * 1.04}px;
+    top: -250px;
+  }
 `;
 
-const SVG3 = styled.div`
+const SVG3 = styled.div<MouseMovePos>`
   position: absolute;
-  background-image: url(${svg3});
-  background-repeat: no-repeat;
-  background-size: auto 450px;
-  background-position: center top;
+  background-color: ${(props) => props.theme.colors.raisinBlackShade2};
+  border-radius: 100%;
 
-  top: 0;
-
-  height: 100%;
-  width: 100%;
+  max-width: ${1300 * 1.08}px;
+  height: ${1200 * 1.08}px;
+  top: -900px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+  @media only screen and (max-width: 1400px) {
+    height: ${1100 * 1.08}px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: ${600 * 1.08}px;
+    top: -400px;
+  }
+  @media only screen and (max-width: 500px) {
+    height: ${400 * 1.08}px;
+    top: -250px;
+  }
 `;
 
-// const SVG3 = styled(SVG)`
-//   @media screen and (max-width: 1400px) {
-//     height: 430px;
-//   }
-// `;
-
-  /* transform: rotateY(${props => props.position.y}deg); */
-
-// const Div = styled.div`
-//   position: absolute;
-//   z-index: 4;
-//   left: 40px;
-//   top: 10px;
-// `;
-
-const Dots = styled.div`
+const Dots = styled.div<MouseMovePos>`
   display: flex;
   justify-content: space-between;
   gap: 30px;
   position: absolute;
   margin: 0 auto;
-  width: 50%;
-  left: 50%;
-  top: 6%;
-  transform: translateX(-50%);
+  max-width: 700px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 3%;
   overflow: hidden;
+  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+
+  @media only screen and (max-width: 1400px) {
+    top: 0;
+    gap: 20px;
+  }
+  @media only screen and (max-width: 800px) {
+    /* height: ${600 * 1.08}px;
+    top: -400px; */
+    top: 1%;
+  }
+  @media only screen and (max-width: 500px) {
+    /* height: ${400 * 1.08}px;
+    top: -250px; */
+  }
+  border: 1px solid red;
 `;
 
 const handleDotSizes = (size: string) => {
-  switch(size) {
-    case 'large': 
-      return '80px';
-    case 'mid':
-      return '60px';
-    case 'small':
-      return '50px';
+  switch (size) {
+    case "large":
+      return "80px";
+    case "mid":
+      return "60px";
+    case "small":
+      return "50px";
     default:
-      return '70px';
+      return "70px";
   }
-}
+};
 
-const rotate = (z: number) => keyframes`
-  from {
-    transform: rotateZ(${z}deg)
-  }
-  to {
-    transform: rotateZ(${z - 360}deg);
-  }
-`;
+const Circle = styled.div<DotStyle>`
+  background-color: ${(props) => props.theme.colors.blobColor};
+  border-radius: 100%;
 
-const Dot = styled.div<DotStyle>`
-  position: relative;
-  width: ${({ size }) => handleDotSizes(size!)};
-  height: ${({ size }) => handleDotSizes(size!)};
-  background: url(${triangle}) no-repeat center transparent;
-  transform: rotateZ(${(props) => props.orientation}deg);
+  /* max-width: ${({ size }) => handleDotSizes(size!)};
+  max-height: ${({ size }) => handleDotSizes(size!)}; */
+  width: 80px;
+  height: 80px;
+  margin-top: ${(props) => props.pos}%;
   flex-shrink: 0;
-  margin-top: ${props => props.pos || '0'};
-  animation: ${props => rotate(props.orientation!)} 10s  linear infinite;
-  transform-origin: center;
-`;
 
-/* transform: rotateX( ${props => props.position.x}deg) rotateY(${props => props.position.y}deg) */
+  box-shadow: inset 0 -10px 0 ${(props) => props.theme.colors.raisinBlackShade1};
+  /* border: 5px solid ${(props) => props.theme.colors.raisinBlackShade1}; */
+  @media only screen and (max-width: 1400px) {
+    margin-top: ${(props) => props.pos - 10}%;
+  }
+  @media only screen and (max-width: 800px) {
+    /* height: ${600 * 1.08}px;
+    top: -400px; */
+    top: 0;
+  }
+  @media only screen and (max-width: 500px) {
+    /* height: ${400 * 1.08}px;
+    top: -250px; */
+  }
+`;

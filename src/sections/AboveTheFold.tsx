@@ -5,7 +5,7 @@ import Cloud from '../components/Cloud';
 export default function Home() {
 
   return (
-    <Container>
+    <FoldDivider>
       <Div>
         <H1>
           Ohey there. I am <Highlight>Sam</Highlight>.
@@ -18,13 +18,17 @@ export default function Home() {
           <Cloud />
         </CloudPos>
       </Div>
-    </Container>
+    </FoldDivider>
   );
 }
 
 interface ColorStyle {
   readonly dim?: boolean;
 }
+
+const FoldDivider = styled(Container)`
+  min-height: 100vh;
+`;
 
 const Div = styled.div<ColorStyle>`
   display: flex;
@@ -47,5 +51,5 @@ const SubText = styled.div`
 `;
 
 const CloudPos = styled.div`
-  margin: 100px auto 0 auto;
+  margin: 150px auto -50px auto;
 `;

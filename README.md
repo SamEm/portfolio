@@ -3,8 +3,11 @@
 - Scroll animation
 - Responsive menu
 - Animate clouds
-- Double check that every page is responsive
+- Make everything responsive
 - Custom scrollbar
+- Clean up spacing below headers
+- Load in animations
+- Round corners
 
 <br>
 

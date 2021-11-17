@@ -39,10 +39,9 @@ const InnerHead = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1320px;
   width: 100%;
-  margin: 0 30px;
-  margin-top: 45px;
+  margin: 0 80px;
+  margin-top: 40px;
 `;
 
 const Logo = styled.img`

@@ -9,7 +9,7 @@ import Cloud from "../components/Cloud";
 
 export default function Work() {
   return (
-    <Container mt="100px">
+    <Container>
       <H1>
         Highlighted Work<Highlight>.</Highlight>
       </H1>
@@ -55,7 +55,7 @@ export default function Work() {
                     <ProjectInfoPos>
                       <H2 work>Holidaze booking</H2>
                       <ProjectInfoText>
-                        A accomodation booking website for Holidaze with focus
+                        A rough mock of a accomodation booking website with focus
                         on Bergen, Norway
                       </ProjectInfoText>
                     </ProjectInfoPos>
