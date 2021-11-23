@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-import { Highlight, Container } from '../theme/GlobalStyles';
-import Cloud from '../components/Cloud';
+import { forwardRef } from "react";
+import styled from "styled-components";
+import { Highlight, Container } from "../theme/GlobalStyles";
+import Cloud from "../components/Cloud";
 import Anime from "react-anime";
 
-export default function Home() {
+const Home = (props: any, ref: any) => {
   const config = {
     duartion: 1000,
     translateX: ["-5em", 0],
@@ -11,7 +12,7 @@ export default function Home() {
   };
 
   return (
-    <FoldDivider>
+    <FoldDivider ref={ref} {...props}>
       <Div>
         <Anime delay={(el: Element, index: number) => 500} {...config}>
           <H1>
@@ -35,6 +36,8 @@ export default function Home() {
     </FoldDivider>
   );
 }
+
+export default forwardRef(Home);
 
 interface ColorStyle {
   readonly dim?: boolean;
@@ -60,7 +63,7 @@ const H2 = styled.h2`
 `;
 
 const SubText = styled.div`
-  color: ${props => props.theme.colors.textDim};
+  color: ${(props) => props.theme.colors.textDim};
   font-size: 24px;
 `;
 
