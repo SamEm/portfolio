@@ -10,8 +10,6 @@ interface MouseMovePos {
 
 interface DotStyle {
   pos: number;
-  size?: string;
-  orientation?: number;
 }
 
 export default function Planet() {
@@ -29,29 +27,14 @@ export default function Planet() {
       <SVG1 x={mouseMove.x} y={mouseMove.y} />
 
       <Dots x={mouseMove.x} y={mouseMove.y}>
-        <Circle
-          pos={5}
-          size="small"
-          orientation={6}
-        />
-        <Circle
-          pos={10}
-          size="large"
-          orientation={132}
-        />
-        <Circle
-          pos={18}
-          size="mid"
-          orientation={293}
-        />
-        <Circle 
-          pos={10} 
-          orientation={133} 
-        />
+        <Circle pos={8} />
+        <Circle pos={18} />
+        <Circle pos={18} />
+        <Circle pos={8} />
       </Dots>
-      {/* <Div>
+      <div>
         {position.x}:{position.y}
-      </Div> */}
+      </div>
     </Container>
   );
 }
@@ -80,7 +63,7 @@ const SVG1 = styled.div<MouseMovePos>`
   margin: 0 auto;
 
   box-shadow: inset 0 -10px 0 #312e4f;
-  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     height: 1100px;
@@ -106,7 +89,7 @@ const SVG2 = styled.div<MouseMovePos>`
   left: 0;
   right: 0;
   margin: 0 auto;
-  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     height: ${1100 * 1.04}px;
@@ -132,7 +115,8 @@ const SVG3 = styled.div<MouseMovePos>`
   left: 0;
   right: 0;
   margin: 0 auto;
-  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
+
   @media only screen and (max-width: 1400px) {
     height: ${1100 * 1.08}px;
   }
@@ -148,7 +132,7 @@ const SVG3 = styled.div<MouseMovePos>`
 
 const Dots = styled.div<MouseMovePos>`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 30px;
   position: absolute;
   margin: 0 auto;
@@ -156,62 +140,37 @@ const Dots = styled.div<MouseMovePos>`
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: 3%;
   overflow: hidden;
-  transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0);
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
-    top: 0;
-    gap: 20px;
+    gap: 0;
   }
-  @media only screen and (max-width: 800px) {
-    /* height: ${600 * 1.08}px;
-    top: -400px; */
-    top: 1%;
+  @media only screen and (max-width: 810px) {
+    max-width: 550px;
   }
-  @media only screen and (max-width: 500px) {
-    /* height: ${400 * 1.08}px;
-    top: -250px; */
-  }
-  border: 1px solid red;
 `;
 
-const handleDotSizes = (size: string) => {
-  switch (size) {
-    case "large":
-      return "80px";
-    case "mid":
-      return "60px";
-    case "small":
-      return "50px";
-    default:
-      return "70px";
-  }
-};
-
 const Circle = styled.div<DotStyle>`
-  background-color: ${(props) => props.theme.colors.blobColor};
+  background-color: ${({ theme }) => theme.colors.blobColor};
   border-radius: 100%;
 
-  /* max-width: ${({ size }) => handleDotSizes(size!)};
-  max-height: ${({ size }) => handleDotSizes(size!)}; */
   width: 80px;
   height: 80px;
-  margin-top: ${(props) => props.pos}%;
+  margin-top: ${({ pos }) => pos}%;
   flex-shrink: 0;
 
-  box-shadow: inset 0 -10px 0 ${(props) => props.theme.colors.raisinBlackShade1};
-  /* border: 5px solid ${(props) => props.theme.colors.raisinBlackShade1}; */
+  box-shadow: inset 0 -10px 0 ${({ theme }) => theme.colors.raisinBlackShade1};
   @media only screen and (max-width: 1400px) {
-    margin-top: ${(props) => props.pos - 10}%;
+    margin-top: ${({ pos }) => pos - 7}%;
   }
-  @media only screen and (max-width: 800px) {
-    /* height: ${600 * 1.08}px;
-    top: -400px; */
+  @media only screen and (max-width: 950px) {
+    width: 70px;
+    height: 70px;
     top: 0;
   }
   @media only screen and (max-width: 500px) {
-    /* height: ${400 * 1.08}px;
-    top: -250px; */
+    width: 50px;
+    height: 50px;
   }
 `;
