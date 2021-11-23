@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import spaceXPic from "../assets/0T4LM.png";
 import holidazePic from "../assets/1i3h0.jpg";
-import Cloud from "../components/Cloud";
 
 export default function Work() {
   return (
