@@ -20,6 +20,10 @@ const theme: DefaultTheme = {
     // raisinBlackShade2: "#0b1726", // Shade 2
     raisinBlackShade2: "rgba(53, 39, 69, .1)", // Shade 2
   },
+  shading: {
+    soft: 'box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);',
+    hard: 'box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.4);'
+  }
 };
 
 export const GlobalStyle = createGlobalStyle`
