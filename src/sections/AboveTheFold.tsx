@@ -1,19 +1,33 @@
 import styled from 'styled-components';
 import { Highlight, Container } from '../theme/GlobalStyles';
 import Cloud from '../components/Cloud';
+import Anime from "react-anime";
 
 export default function Home() {
+  const config = {
+    duartion: 1000,
+    translateX: ["-5em", 0],
+    opacity: [0, 1],
+  };
 
   return (
     <FoldDivider>
       <Div>
-        <H1>
-          Ohey there. I am <Highlight>Sam</Highlight>.
-        </H1>
-        <H2>
-          A <Highlight>full stack developer</Highlight> from Norway.
-        </H2>
-        <SubText>I create experiences that make people's lives easier.</SubText>
+        <Anime delay={(el: Element, index: number) => 500} {...config}>
+          <H1>
+            Ohey there. I am <Highlight>Sam</Highlight>.
+          </H1>
+        </Anime>
+        <Anime delay={(el: Element, index: number) => 1000} {...config}>
+          <H2>
+            A <Highlight>full stack developer</Highlight> from Norway.
+          </H2>
+        </Anime>
+        <Anime delay={(el: Element, index: number) => 1500} {...config}>
+          <SubText>
+            I create experiences that make people's lives easier.
+          </SubText>
+        </Anime>
         <CloudPos>
           <Cloud />
         </CloudPos>
@@ -51,5 +65,5 @@ const SubText = styled.div`
 `;
 
 const CloudPos = styled.div`
-  margin: 150px auto -50px auto;
+  margin: 100px auto 0 auto;
 `;
