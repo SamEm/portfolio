@@ -1,6 +1,5 @@
 import {FC} from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { Highlight } from '../theme/GlobalStyles';
 import logo from '../assets/logo.png';
 
@@ -13,8 +12,9 @@ interface Props {
 }
 
 const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
+  console.log(typeof WorkRef);
   const scrollTo = (e: any) => {
-    console.log(e)
+    console.log(typeof e)
     e.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -46,6 +46,8 @@ const Head = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
+  position: sticky;
+  top: -30px;
 `;
 
 const InnerHead = styled.nav`
@@ -53,8 +55,7 @@ const InnerHead = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 0 80px;
-  margin-top: 40px;
+  margin: 40px 80px 0;
 `;
 
 const Logo = styled.img`
