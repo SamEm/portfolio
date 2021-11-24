@@ -1,3 +1,4 @@
+import {FC} from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Highlight } from '../theme/GlobalStyles';
@@ -5,28 +6,40 @@ import logo from '../assets/logo.png';
 
 // Get a higher res version of the logo
 
-export default function Header() {
+interface Props {
+  WorkRef: any;
+  ProjectsRef: any;
+  ContactRef: any;
+}
+
+const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
+  const scrollTo = (e: any) => {
+    console.log(e)
+    e.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   return (
     <Head>
       <InnerHead>
-        <Link exact to="/">
+        <Link>
           <Logo src={logo} />
         </Link>
         <Menu>
-          <Link exact to="/">
-            Home
-          </Link>
-          <Link to="/work">Work</Link>
-          <Link to="/projects">
+          <Link onClick={() => scrollTo(WorkRef.current)}>Work</Link>
+          <Link onClick={() => scrollTo(ProjectsRef.current)}>
             Projects <Highlight>&</Highlight> Concepts
           </Link>
-          <Link to="/contact">Contact</Link>
+          <Link onClick={() => scrollTo(ContactRef.current)}>Contact</Link>
         </Menu>
       </InnerHead>
     </Head>
   );
 }
+
+export default Header
 
 const Head = styled.header`
   margin: 0 auto;
@@ -54,15 +67,16 @@ const Menu = styled.nav`
   gap: 20px;
 `;
 
-const Link = styled(NavLink)`
+const Link = styled.div`
   font-size: 18px;
   color: ${props => props.theme.colors.textLight};
   transition: color .2s ease;
+  cursor: pointer;
 
-  &.active {
+  /* &.active {
     color: ${props => props.theme.colors.primary};
     transition: color .2s ease;
-  };
+  }; */
   &:hover {
     color: ${props => props.theme.colors.primary};
   };

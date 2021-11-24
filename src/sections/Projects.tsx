@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -5,9 +6,9 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 
-export default function Projects() {
+const Projects = (props: any, ref: any) => {
   return (
-    <Container mt="100px">
+    <Container mt="100px" ref={ref} {...props}>
       <H1>
         Notable projects & concepts<Highlight>.</Highlight>
       </H1>
@@ -88,7 +89,9 @@ export default function Projects() {
       </ProjectsWrap>
     </Container>
   );
-}
+};
+
+export default forwardRef(Projects);
 
 const ProjectsWrap = styled.div`
   display: inline-grid;
@@ -98,7 +101,7 @@ const ProjectsWrap = styled.div`
   justify-content: center;
 
   width: 100%;
-  margin-top: 200px;
+  margin-top: 50px;
   @media screen and (max-width: 1350px) {
     margin-top: 50px;
   }

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -5,9 +6,9 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import spaceXPic from "../assets/0T4LM.png";
 import holidazePic from "../assets/1i3h0.jpg";
 
-export default function Work() {
+const Work = (props: any, ref: any) => {
   return (
-    <Container>
+    <Container ref={ref} {...props}>
       <H1>
         Highlighted Work<Highlight>.</Highlight>
       </H1>
@@ -53,8 +54,8 @@ export default function Work() {
                     <ProjectInfoPos>
                       <H2 work>Holidaze booking</H2>
                       <ProjectInfoText>
-                        A rough mock of a accomodation booking website with focus
-                        on Bergen, Norway
+                        A rough mock of a accomodation booking website with
+                        focus on Bergen, Norway
                       </ProjectInfoText>
                     </ProjectInfoPos>
                     <ProjectLink target="_blank" href="">
@@ -76,8 +77,10 @@ export default function Work() {
   );
 }
 
+export default forwardRef(Work);
+
 const ProjectsCont = styled.div`
-  margin-top: 200px;
+  margin-top: 50px;
   width: 100%;
 
   @media screen and (max-width: 1350px) {
@@ -165,7 +168,7 @@ const ProjectLink = styled.a`
   width: 30px;
   height: 30px;
   margin-top: 10px;
-  color: ${props => props.theme.colors.textLight};
+  color: ${(props) => props.theme.colors.textLight};
   font-size: 30px;
 `;
 

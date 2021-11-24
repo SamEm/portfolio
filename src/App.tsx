@@ -18,8 +18,6 @@ export default function App() {
   const ProjectsRef = useRef<HTMLDivElement>();
   const ContactRef = useRef<HTMLDivElement>();
 
-
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -27,11 +25,15 @@ export default function App() {
       <BackgroundGlow />
       <Stars />
       <Page>
-        <Header />
+        <Header
+          WorkRef={WorkRef}
+          ProjectsRef={ProjectsRef}
+          ContactRef={ContactRef}
+        />
         <AboveTheFold ref={AboveTheFoldRef} />
-        <Work />
-        <Projects />
-        <Contact />
+        <Work ref={WorkRef} />
+        <Projects ref={ProjectsRef} />
+        <Contact ref={ContactRef} />
         <Footer />
       </Page>
     </ThemeProvider>

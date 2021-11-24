@@ -1,13 +1,17 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faTwitter, faTwitch } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faTwitter,
+  faTwitch,
+} from "@fortawesome/free-brands-svg-icons";
 
-export default function Contact() {
-
+const Contact = (props: any, ref: any) => {
   return (
-    <Container mt="100px">
+    <Container mt="100px" ref={ref} {...props}>
       <H1>
         Where to find me<Highlight>.</Highlight>
       </H1>
@@ -33,10 +37,12 @@ export default function Contact() {
       </InnerCont>
     </Container>
   );
-}
+};
+
+export default forwardRef(Contact);
 
 const InnerCont = styled.div`
-  margin-top: 200px;
+  margin-top: 50px;
   @media screen and (max-width: 1350px) {
     margin-top: 50px;
   }
@@ -60,7 +66,7 @@ const SocialWrap = styled.div`
 const Social = styled.a`
   font-size: 30px;
   color: ${(props) => props.theme.colors.textLight};
-  transition: color .2s ease;
+  transition: color 0.2s ease;
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
