@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
-import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
+import { GoLinkExternal } from 'react-icons/all';
 import spaceXPic from "../assets/0T4LM.png";
 import holidazePic from "../assets/1i3h0.jpg";
 
@@ -10,7 +9,9 @@ const Work = (props: any, ref: any) => {
   return (
     <Container ref={ref} {...props}>
       <H1>
-        Highlighted Work<Highlight>.</Highlight>
+        <Split>
+          Highlighted Work<Highlight>.</Highlight>
+        </Split>
       </H1>
       <ProjectsCont>
         <ProjectPos>
@@ -31,7 +32,7 @@ const Work = (props: any, ref: any) => {
                       target="_blank"
                       href="https://github.com/TuttiFrooti/spacex-ts"
                     >
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                      <GoLinkExternal />
                     </ProjectLink>
                   </ProjectInfoTextWrapInner>
                 </ProjectInfoTextWrap>
@@ -59,7 +60,7 @@ const Work = (props: any, ref: any) => {
                       </ProjectInfoText>
                     </ProjectInfoPos>
                     <ProjectLink target="_blank" href="">
-                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                      <GoLinkExternal />
                     </ProjectLink>
                   </ProjectInfoTextWrapInner>
                 </ProjectInfoTextWrap>
@@ -170,6 +171,7 @@ const ProjectLink = styled.a`
   margin-top: 10px;
   color: ${(props) => props.theme.colors.textLight};
   font-size: 30px;
+  cursor: pointer;
 `;
 
 const ProjectLangsWrap = styled.div<ProjectsStyle>`

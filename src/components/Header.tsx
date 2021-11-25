@@ -2,8 +2,8 @@ import { FC, useState } from 'react';
 import styled, { css, keyframes } from "styled-components";
 import { Highlight } from '../theme/GlobalStyles';
 import logo from '../assets/logo.png';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { HiOutlineMenuAlt3, AiOutlineClose } from 'react-icons/all';
+
 
 // Get a higher res version of the logo
 
@@ -52,14 +52,14 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
           </Link>
           <Link onClick={() => scrollTo(ContactRef.current)}>Contact</Link>
         </Menu>
-{/* 
+
         <ResponsiveMenuWrap>
           <ResponsiveMenuIcon onClick={openResponsiveMenu}>
-            <FontAwesomeIcon icon={faBars} />
+            <HiOutlineMenuAlt3 />
           </ResponsiveMenuIcon>
           <ResponsiveMenu open={buttonState}>
             <ResponsiveMenuIcon onClick={openResponsiveMenu}>
-              <FontAwesomeIcon icon={faTimes} />
+              <AiOutlineClose />
             </ResponsiveMenuIcon>
 
             <Links>
@@ -70,7 +70,7 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
               <Link onClick={() => responsiveScrollTo(ContactRef.current)}>Contact</Link>
             </Links>
           </ResponsiveMenu>
-        </ResponsiveMenuWrap> */}
+        </ResponsiveMenuWrap>
       </InnerHead>
     </Head>
   );
@@ -84,14 +84,7 @@ const Head = styled.header`
   display: flex;
   justify-content: center;
   position: fixed;
-`;
-
-const InnerHead = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 40px 80px 0;
+  z-index: 1;
 `;
 
 const Logo = styled.img`
@@ -118,10 +111,11 @@ const Link = styled.div`
 const ResponsiveMenuWrap = styled.div`
   position: relative;
   z-index: 100;
+  display: none;
 `;
 
 const ResponsiveMenuIcon = styled.div`
-  font-size: 1.5em;
+  font-size: 2em;
   cursor: pointer;
 `;
 
@@ -164,6 +158,23 @@ const Links = styled.div`
     font-size: 5em;
     @media screen and (max-width: 800px) {
       font-size: 2em;
+    }
+  }
+`;
+
+const InnerHead = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 40px 80px 0;
+
+  @media only screen and (max-width: 750px) {
+    ${Menu} {
+      display: none;
+    }
+    ${ResponsiveMenuWrap} {
+      display: flex;
     }
   }
 `;

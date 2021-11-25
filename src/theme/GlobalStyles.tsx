@@ -14,7 +14,10 @@ const theme: DefaultTheme = {
     textDark: "",
     background: "#0b1726",
     raisinBlack: "#2b2745", // Foreground circle
+    // raisinBlack: "#0F1A29",
+    // raisinBlackShade1: "#433a4f", // Shade 1
     raisinBlackShade1: "rgba(44, 39, 69, .3)", // Shade 1
+    // raisinBlackShade2: "#0b1726", // Shade 2
     raisinBlackShade2: "rgba(53, 39, 69, .1)", // Shade 2
   },
   shading: {
@@ -24,12 +27,13 @@ const theme: DefaultTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
   * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0.3px;
     text-decoration: none;
   }
 
@@ -64,14 +68,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-interface HighlightProps {
-  dark?: true;
-}
-
-export const Highlight = styled.span<HighlightProps>`
-  transition: color 0.2s ease;
-  color: ${(props) =>
-    props.dark ? props.theme.colors.raisinBlack : props.theme.colors.primary};
+export const Highlight = styled.span`
+  color: ${props => props.theme.colors.primary};
 `;
 
 interface MarginTop {
@@ -85,18 +83,31 @@ export const Container = styled.div<MarginTop>`
   align-items: center;
   max-width: 1320px;
   width: 100%;
-  margin: 50px auto 0;
+  margin: 0 auto;
   margin-top: ${(props) => props.mt || "0"};
-  z-index: -1;
 
   /* @media screen and (max-width: 1550px) {
     margin-top: ${(props) => `calc(${props.mt}/2)` || "50px"};
   } */
 `;
 
+export const Split = styled.span`
+
+`;
+
 export const H1 = styled.h1`
   font-size: 48px;
   letter-spacing: .2px;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    ${Split} {
+      
+    }
+  }
+
 `;
 
 interface PaddingPos {

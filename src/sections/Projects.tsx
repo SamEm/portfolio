@@ -1,23 +1,21 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
+import { BsGithub, GoLinkExternal } from 'react-icons/all';
+import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
 
 const Projects = (props: any, ref: any) => {
   return (
     <Container mt="100px" ref={ref} {...props}>
       <H1>
-        Notable projects & concepts<Highlight>.</Highlight>
+        Notable <Split>Projects <Highlight>&</Highlight> Concepts<Highlight>.</Highlight></Split>
       </H1>
       <ProjectsWrap>
         <Project>
           <ProjectPadding>
             <ProjectTop>
               <GithubIcon>
-                <FontAwesomeIcon icon={faGithub} />
+                <BsGithub />
               </GithubIcon>
               <H2>Bug reporting website</H2>
               <ShortDesc>Short project description</ShortDesc>
@@ -34,7 +32,7 @@ const Projects = (props: any, ref: any) => {
                 target="_blank"
                 href="https://github.com/SamEm/bug-reporting-website"
               >
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                <GoLinkExternal />
               </ProjectLink>
             </ProjectBottom>
           </ProjectPadding>
@@ -43,7 +41,7 @@ const Projects = (props: any, ref: any) => {
           <ProjectPadding>
             <ProjectTop>
               <GithubIcon>
-                <FontAwesomeIcon icon={faGithub} />
+                <BsGithub />
               </GithubIcon>
               <H2>Twitch panels</H2>
               <ShortDesc>Short project description</ShortDesc>
@@ -56,7 +54,7 @@ const Projects = (props: any, ref: any) => {
               </ProjectLangsWrap>
 
               <ProjectLink target="_blank" href="https://logiz.net/panels/">
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                <GoLinkExternal />
               </ProjectLink>
             </ProjectBottom>
           </ProjectPadding>
@@ -65,7 +63,7 @@ const Projects = (props: any, ref: any) => {
           <ProjectPadding>
             <ProjectTop>
               <GithubIcon>
-                <FontAwesomeIcon icon={faGithub} />
+                <BsGithub />
               </GithubIcon>
               <H2>1324 game</H2>
               <ShortDesc>Short project description</ShortDesc>
@@ -81,7 +79,7 @@ const Projects = (props: any, ref: any) => {
                 target="_blank"
                 href="https://projects.logiz.net/1234/"
               >
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                <GoLinkExternal />
               </ProjectLink>
             </ProjectBottom>
           </ProjectPadding>
@@ -112,7 +110,7 @@ const Project = styled.div`
   height: 300px;
   display: flex;
 
-  background-color: ${(props) => props.theme.colors.raisinBlackShade1};
+  background-color: ${(props) => props.theme.colors.raisinBlack};
   border-radius: 5px;
 `;
 

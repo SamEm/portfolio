@@ -1,19 +1,16 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Container, H1, H2, Highlight } from "../theme/GlobalStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGithub,
-  faTwitter,
-  faTwitch,
-} from "@fortawesome/free-brands-svg-icons";
+import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
+import { BsGithub, BsTwitter, BsTwitch } from 'react-icons/all';
 
 const Contact = (props: any, ref: any) => {
   return (
     <Container mt="100px" ref={ref} {...props}>
       <H1>
-        Where to find me<Highlight>.</Highlight>
+        <Split>
+          Where to find me<Highlight>.</Highlight>
+        </Split>
       </H1>
       <InnerCont>
         <LinkStyle href="mailto:hello@logiz.net">
@@ -22,16 +19,16 @@ const Contact = (props: any, ref: any) => {
 
         <SocialWrap>
           <Social href="">
-            <FontAwesomeIcon icon={faGithub} />
+            <BsGithub />
           </Social>
           <Social href="">
-            <FontAwesomeIcon icon={faGithub} />
+            <BsGithub />
           </Social>
           <Social href="">
-            <FontAwesomeIcon icon={faTwitter} />
+            <BsTwitter />
           </Social>
           <Social href="">
-            <FontAwesomeIcon icon={faTwitch} />
+            <BsTwitch />
           </Social>
         </SocialWrap>
       </InnerCont>
