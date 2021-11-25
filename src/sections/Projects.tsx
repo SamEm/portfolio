@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import { BsGithub, GoLinkExternal } from 'react-icons/all';
 import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
 
+/*
+  Projects to add:
+
+  - Censor list
+  - Portfolio
+  - Week number
+  
+*/
+
 const Projects = (props: any, ref: any) => {
   return (
     <Container mt="100px" ref={ref} {...props}>
