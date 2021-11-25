@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../theme/GlobalStyles';
+import Anime from "react-anime";
 
 export default function Clouds() {
 
