@@ -145,7 +145,7 @@ const ProjectInfo = styled.div`
 `;
 
 const ProjectInfoTextWrap = styled.div`
-  background-color: ${(props) => props.theme.colors.raisinBlackShade1};
+  background-color: ${(props) => props.theme.colors.raisinBlack};
   height: 150px;
   border-radius: 5px;
 

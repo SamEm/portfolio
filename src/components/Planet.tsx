@@ -32,6 +32,8 @@ export default function Planet() {
         <Circle pos={18} />
         <Circle pos={8} />
       </Dots>
+      <SVGShadow x={mouseMove.x} y={mouseMove.y} />
+
       <div>
         {position.x}:{position.y}
       </div>
@@ -49,6 +51,41 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
+const SVGShadow = styled.div<MouseMovePos>`
+  position: absolute;
+
+  background-color: ${(props) => props.theme.colors.primary};
+  border-radius: 100%;
+  max-width: 800px;
+  height: 800px;
+
+  top: -800px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  /* background: radial-gradient(
+    farthest-corner at top,
+    rgba(84, 61, 143, 0.4) -80%,
+    rgba(43, 39, 69, 0.4) 70%
+  ); */
+  /* box-shadow: 20px 20px 50px 0px rgba(0, 0, 0, 0.3); */
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) =>
+    props.y}%, 0); */
+
+  /* @media only screen and (max-width: 1400px) {
+    height: 1100px;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 600px;
+    top: -400px;
+  }
+  @media only screen and (max-width: 500px) {
+    height: 400px;
+    top: -250px;
+  } */
+`;
+
 const SVG1 = styled.div<MouseMovePos>`
   position: absolute;
 
@@ -62,8 +99,9 @@ const SVG1 = styled.div<MouseMovePos>`
   right: 0;
   margin: 0 auto;
 
-  box-shadow: inset 0 -10px 0 #312e4f;
-  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
+  box-shadow: inset 0 -5px 0 #312e4f, inset 20px 20px 100px 0px #312e4f;
+  /* transform: translate3d(-${(props) => props.x}%, -${(props) =>
+    props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     height: 1100px;

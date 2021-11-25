@@ -41,7 +41,8 @@ export default function Clouds() {
 }
 
 const Cloud = styled.div`
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   position: relative;
 `;
 
