@@ -1,7 +1,9 @@
-import {FC} from 'react';
-import styled from 'styled-components';
+import { FC, useState } from 'react';
+import styled, { css, keyframes } from "styled-components";
 import { Highlight } from '../theme/GlobalStyles';
 import logo from '../assets/logo.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // Get a higher res version of the logo
 
@@ -11,8 +13,13 @@ interface Props {
   ContactRef: any;
 }
 
+interface ResponsiveMenuProps {
+  open: boolean;
+}
+
 const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
-  console.log(typeof WorkRef);
+  const [buttonState, setButtonState] = useState(false);
+
   const scrollTo = (e: any) => {
     console.log(typeof e)
     e.scrollIntoView({
@@ -20,6 +27,17 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
       block: "start",
     });
   };
+  const responsiveScrollTo = (e: any) => {
+    setButtonState(!buttonState);
+    e.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const openResponsiveMenu = () => { 
+    setButtonState(!buttonState);
+  }
 
   return (
     <Head>
@@ -34,20 +52,38 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
           </Link>
           <Link onClick={() => scrollTo(ContactRef.current)}>Contact</Link>
         </Menu>
+{/* 
+        <ResponsiveMenuWrap>
+          <ResponsiveMenuIcon onClick={openResponsiveMenu}>
+            <FontAwesomeIcon icon={faBars} />
+          </ResponsiveMenuIcon>
+          <ResponsiveMenu open={buttonState}>
+            <ResponsiveMenuIcon onClick={openResponsiveMenu}>
+              <FontAwesomeIcon icon={faTimes} />
+            </ResponsiveMenuIcon>
+
+            <Links>
+              <Link onClick={() => responsiveScrollTo(WorkRef.current)}>Work</Link>
+              <Link onClick={() => responsiveScrollTo(ProjectsRef.current)}>
+                Projects <Highlight>&</Highlight> Concepts
+              </Link>
+              <Link onClick={() => responsiveScrollTo(ContactRef.current)}>Contact</Link>
+            </Links>
+          </ResponsiveMenu>
+        </ResponsiveMenuWrap> */}
       </InnerHead>
     </Head>
   );
 }
 
-export default Header
+export default Header;
 
 const Head = styled.header`
   margin: 0 auto;
   width: 100%;
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: -30px;
+  position: fixed;
 `;
 
 const InnerHead = styled.nav`
@@ -70,15 +106,64 @@ const Menu = styled.nav`
 
 const Link = styled.div`
   font-size: 18px;
-  color: ${props => props.theme.colors.textLight};
-  transition: color .2s ease;
+  color: ${(props) => props.theme.colors.textLight};
+  transition: color 0.2s ease;
   cursor: pointer;
 
-  /* &.active {
-    color: ${props => props.theme.colors.primary};
-    transition: color .2s ease;
-  }; */
   &:hover {
-    color: ${props => props.theme.colors.primary};
-  };
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+const ResponsiveMenuWrap = styled.div`
+  position: relative;
+  z-index: 100;
+`;
+
+const ResponsiveMenuIcon = styled.div`
+  font-size: 1.5em;
+  cursor: pointer;
+`;
+
+const ResponsiveMenu = styled.div<ResponsiveMenuProps>`
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: ${({ theme }) => theme.colors.blobColor};
+  left: 0;
+  top: 0;
+  clip-path: circle(0);
+  transition: clip-path 1s;
+
+  ${({ open }) =>
+    open &&
+    css`
+      transition: clip-path 1s;
+      clip-path: circle(100%);
+    `}
+
+  ${ResponsiveMenuIcon} {
+    margin: 45px 90px 0;
+    align-self: start;
+    right: 0;
+    position: absolute;
+    font-size: 2em;
+  }
+`;
+
+const Links = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${Link} {
+    font-size: 5em;
+    @media screen and (max-width: 800px) {
+      font-size: 2em;
+    }
+  }
 `;
