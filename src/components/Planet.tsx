@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { MousePosition } from "../utils/mousePosition";
 import { MouseMove } from "../utils/mouseMove";
+import Anime from "react-anime";
 
 interface MouseMovePos {
   x: number;
@@ -15,6 +16,12 @@ interface DotStyle {
 export default function Planet() {
   const position = MousePosition();
   const mouseMove = MouseMove();
+  const config = {
+    duartion: 1000,
+    translateY: ["-5em", 0],
+    opacity: [0, 1],
+  };
+
 
   useEffect(() => {
     const windowWidth = window.innerWidth;
@@ -22,16 +29,22 @@ export default function Planet() {
 
   return (
     <Container>
-      <SVG3 x={mouseMove.x} y={mouseMove.y} />
-      <SVG2 x={mouseMove.x} y={mouseMove.y} />
-      <SVG1 x={mouseMove.x} y={mouseMove.y} />
+      <Anime delay={(el: Element, index: number) => 1000} {...config}>
+        <SVG3 x={mouseMove.x} y={mouseMove.y} />
+      </Anime>
+      <Anime delay={(el: Element, index: number) => 800} {...config}>
+        <SVG2 x={mouseMove.x} y={mouseMove.y} />
+      </Anime>
+      <Anime delay={(el: Element, index: number) => 500} {...config}>
+        <SVG1 x={mouseMove.x} y={mouseMove.y} />
+        <Dots x={mouseMove.x} y={mouseMove.y}>
+          <Circle pos={8} />
+          <Circle pos={18} />
+          <Circle pos={18} />
+          <Circle pos={8} />
+        </Dots>
+      </Anime>
 
-      <Dots x={mouseMove.x} y={mouseMove.y}>
-        <Circle pos={8} />
-        <Circle pos={18} />
-        <Circle pos={18} />
-        <Circle pos={8} />
-      </Dots>
       <SVGShadow x={mouseMove.x} y={mouseMove.y} />
 
       <div>
