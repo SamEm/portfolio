@@ -26,6 +26,7 @@ export default function App() {
       <Stars />
       <Page>
         <Header
+          AboveTheFoldRef={AboveTheFoldRef}
           WorkRef={WorkRef}
           ProjectsRef={ProjectsRef}
           ContactRef={ContactRef}

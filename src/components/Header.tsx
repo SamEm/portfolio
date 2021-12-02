@@ -3,11 +3,12 @@ import styled, { css, keyframes } from "styled-components";
 import { Highlight } from '../theme/GlobalStyles';
 import logo from '../assets/logo.png';
 import { HiOutlineMenuAlt3, AiOutlineClose } from 'react-icons/all';
-
+import Anime from "react-anime";
 
 // Get a higher res version of the logo
 
 interface Props {
+  AboveTheFoldRef: any;
   WorkRef: any;
   ProjectsRef: any;
   ContactRef: any;
@@ -17,8 +18,14 @@ interface ResponsiveMenuProps {
   open: boolean;
 }
 
-const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
+const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }) => {
   const [buttonState, setButtonState] = useState(false);
+  
+  const config = {
+    duartion: 1000,
+    translateY: ["-5em", 0],
+    opacity: [0, 1],
+  };
 
   const scrollTo = (e: any) => {
     console.log(typeof e)
@@ -43,15 +50,18 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
     <Head>
       <InnerHead>
         <Link>
-          <Logo src={logo} />
+          <Logo src={logo} onClick={() => scrollTo(AboveTheFoldRef.current)} />
         </Link>
-        <Menu>
-          <Link onClick={() => scrollTo(WorkRef.current)}>Work</Link>
-          <Link onClick={() => scrollTo(ProjectsRef.current)}>
-            Projects <Highlight>&</Highlight> Concepts
-          </Link>
-          <Link onClick={() => scrollTo(ContactRef.current)}>Contact</Link>
-        </Menu>
+
+        <Anime delay={(el: Element, index: number) => 900} {...config}>
+          <Menu>
+            <Link onClick={() => scrollTo(WorkRef.current)}>Work</Link>
+            <Link onClick={() => scrollTo(ProjectsRef.current)}>
+              Projects <Highlight>&</Highlight> Concepts
+            </Link>
+            <Link onClick={() => scrollTo(ContactRef.current)}>Contact</Link>
+          </Menu>
+        </Anime>
 
         <ResponsiveMenuWrap>
           <ResponsiveMenuIcon onClick={openResponsiveMenu}>
@@ -63,11 +73,15 @@ const Header: FC<Props> = ({ WorkRef, ProjectsRef, ContactRef }) => {
             </ResponsiveMenuIcon>
 
             <Links>
-              <Link onClick={() => responsiveScrollTo(WorkRef.current)}>Work</Link>
+              <Link onClick={() => responsiveScrollTo(WorkRef.current)}>
+                Work
+              </Link>
               <Link onClick={() => responsiveScrollTo(ProjectsRef.current)}>
                 Projects <Highlight>&</Highlight> Concepts
               </Link>
-              <Link onClick={() => responsiveScrollTo(ContactRef.current)}>Contact</Link>
+              <Link onClick={() => responsiveScrollTo(ContactRef.current)}>
+                Contact
+              </Link>
             </Links>
           </ResponsiveMenu>
         </ResponsiveMenuWrap>
