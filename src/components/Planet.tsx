@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { MousePosition } from "../utils/mousePosition";
-import { MouseMove } from "../utils/mouseMove";
 import Anime from "react-anime";
 
 interface MouseMovePos {
@@ -11,11 +10,13 @@ interface MouseMovePos {
 
 interface DotStyle {
   pos: number;
+  opacity: number;
+  shadow: boolean;
 }
 
 export default function Planet() {
-  const position = MousePosition();
-  const mouseMove = MouseMove();
+  const mouseMove = MousePosition();
+
   const config = {
     duartion: 1000,
     translateY: ["-5em", 0],
@@ -38,18 +39,14 @@ export default function Planet() {
       <Anime delay={(el: Element, index: number) => 500} {...config}>
         <SVG1 x={mouseMove.x} y={mouseMove.y} />
         <Dots x={mouseMove.x} y={mouseMove.y}>
-          <Circle pos={8} />
-          <Circle pos={18} />
-          <Circle pos={18} />
-          <Circle pos={8} />
+          <Circle pos={8} opacity={0.9} shadow={true} />
+          <Circle pos={18} opacity={0.8} shadow={false} />
+          <Circle pos={18} opacity={1} shadow={false} />
+          <Circle pos={5} opacity={0.9} shadow={true} />
         </Dots>
       </Anime>
 
       <SVGShadow x={mouseMove.x} y={mouseMove.y} />
-
-      <div>
-        {position.x}:{position.y}
-      </div>
     </Container>
   );
 }
@@ -112,7 +109,7 @@ const SVG1 = styled.div<MouseMovePos>`
   right: 0;
   margin: 0 auto;
 
-  box-shadow: inset 0 -5px 0 #312e4f, inset 20px 20px 100px 0px #312e4f;
+  box-shadow: inset 0 -5px 0 #312e4f, inset 20px 20px 100px 0px #3c3961;
   /* transform: translate3d(-${(props) => props.x}%, -${(props) =>
     props.y}%, 0); */
 
@@ -210,8 +207,18 @@ const Circle = styled.div<DotStyle>`
   height: 80px;
   margin-top: ${({ pos }) => pos}%;
   flex-shrink: 0;
+  opacity: ${({ opacity }) => opacity};
 
-  box-shadow: inset 0 -10px 0 ${({ theme }) => theme.colors.raisinBlackShade1};
+  /* box-shadow: inset 0 -10px 0 ${(props) => props.theme.colors}; */
+  box-shadow: inset 0 -10px 0 #2c2a47;
+  ${({ shadow }) =>
+    shadow
+      ? css`
+          box-shadow: inset 0 -5px 0 #24223a;
+        `
+      : css`
+          box-shadow: inset 0 -7px 0 #222138;
+        `}
   @media only screen and (max-width: 1400px) {
     margin-top: ${({ pos }) => pos - 7}%;
   }
