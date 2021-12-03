@@ -10,14 +10,11 @@ const theme: DefaultTheme = {
     secondaryActive: "",
     textLight: "#E6F1FF",
     textDim: "#919BA8",
-    blobColor: "#312e4f",
+    blobColor: "#282541",
     textDark: "",
     background: "#0b1726",
     raisinBlack: "#2b2745", // Foreground circle
-    // raisinBlack: "#0F1A29",
-    // raisinBlackShade1: "#433a4f", // Shade 1
     raisinBlackShade1: "rgba(44, 39, 69, .3)", // Shade 1
-    // raisinBlackShade2: "#0b1726", // Shade 2
     raisinBlackShade2: "rgba(53, 39, 69, .1)", // Shade 2
   },
   shading: {
@@ -48,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   /* Track */
@@ -84,6 +81,7 @@ export const Container = styled.div<MarginTop>`
   max-width: 1320px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 50px;
   margin-top: ${(props) => props.mt || "0"};
 
   /* @media screen and (max-width: 1550px) {

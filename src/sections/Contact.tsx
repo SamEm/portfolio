@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
 import { BsGithub, BsTwitter, BsTwitch } from 'react-icons/all';
