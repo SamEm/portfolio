@@ -60,6 +60,10 @@ const OuterDiv = styled.div<ColorStyle>`
     margin-bottom: 0;
     margin-top: 150px;
   }
+  @media only screen and (max-width: 500px) {
+    margin-bottom: 0;
+    margin-top: 50px;
+  }
 `;
 
 const Div = styled.div<ColorStyle>`

@@ -1,13 +1,39 @@
-import { forwardRef } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
 import { GoLinkExternal } from 'react-icons/all';
 import spaceXPic from "../assets/0T4LM.png";
 import holidazePic from "../assets/1i3h0.jpg";
+import Anime from "react-anime";
+import useIsVisible from "../utils/isVisible";
 
 const Work = (props: any, ref: any) => {
+  const [ autoplayState, setAutoplayState ] = useState(false);
+
+  const isElmVisible = useIsVisible(ref);
+  
+  let configLeft = {
+    duartion: 1000,
+    translateX: ["-5em", 0],
+    opacity: [0, 1],
+    autoplay: false,
+  };
+  let configRight = {
+    duartion: 1000,
+    translateX: ["5em", 0],
+    opacity: [0, 1],
+    autoplay: false,
+  };
+
+
+  useEffect(() => {
+    if (isElmVisible) {
+      setAutoplayState(true);
+    }
+  }, [isElmVisible]);
+
   return (
-    <Container ref={ref} {...props}>
+    <Container mt="-100px" ref={ref} {...props}>
       <H1>
         <Split>
           Highlighted Work<Highlight>.</Highlight>
@@ -15,67 +41,80 @@ const Work = (props: any, ref: any) => {
       </H1>
       <ProjectsCont>
         <ProjectPos>
-          <Project>
-            <Img src={spaceXPic} />
-            <ProjectInfoWrap>
-              <ProjectInfo>
-                <ProjectInfoTextWrap>
-                  <ProjectInfoTextWrapInner>
-                    <ProjectInfoPos>
-                      <H2 work>Space X Launches</H2>
-                      <ProjectInfoText>
-                        A website that shows you the upcoming Space X space
-                        launches.
-                      </ProjectInfoText>
-                    </ProjectInfoPos>
-                    <ProjectLink
-                      target="_blank"
-                      href="https://github.com/TuttiFrooti/spacex-ts"
-                    >
+          <Anime
+            delay={(el: Element, index: number) => 500}
+            {...configLeft}
+            autoplay={autoplayState}
+          >
+            <Project>
+              <Img src={spaceXPic} />
+              <ProjectInfoWrap
+                target="_blank"
+                href="https://github.com/TuttiFrooti/spacex-ts"
+              >
+                <ProjectInfo>
+                  <ProjectInfoTextWrap>
+                    <ProjectInfoTextWrapInner>
+                      <ProjectInfoPos>
+                        <H2 work>Space X Launches</H2>
+                        <ProjectInfoText>
+                          A website that shows you the upcoming Space X space
+                          launches.
+                        </ProjectInfoText>
+                      </ProjectInfoPos>
+                      <ProjectLink>
                         <GoLinkExternal />
-                    </ProjectLink>
-                  </ProjectInfoTextWrapInner>
-                </ProjectInfoTextWrap>
-              </ProjectInfo>
-              <ProjectLangsWrap>
-                <ProjectLang>JS</ProjectLang>
-                <ProjectLang>HTML</ProjectLang>
-                <ProjectLang>CSS</ProjectLang>
-              </ProjectLangsWrap>
-              <CloudPos></CloudPos>
-            </ProjectInfoWrap>
-          </Project>
+                      </ProjectLink>
+                    </ProjectInfoTextWrapInner>
+                  </ProjectInfoTextWrap>
+                </ProjectInfo>
+                <ProjectLangsWrap>
+                  <ProjectLang>JS</ProjectLang>
+                  <ProjectLang>HTML</ProjectLang>
+                  <ProjectLang>CSS</ProjectLang>
+                </ProjectLangsWrap>
+                <CloudPos></CloudPos>
+              </ProjectInfoWrap>
+            </Project>
+          </Anime>
 
-          <Project inverted>
-            <Img src={holidazePic} />
-            <ProjectInfoWrap inverted>
-              <ProjectInfo>
-                <ProjectInfoTextWrap>
-                  <ProjectInfoTextWrapInner>
-                    <ProjectInfoPos>
-                      <H2 work>Holidaze booking</H2>
-                      <ProjectInfoText>
-                        A rough mock of a accomodation booking website with
-                        focus on Bergen, Norway
-                      </ProjectInfoText>
-                    </ProjectInfoPos>
-                    <ProjectLink
-                      target="_blank"
-                      href="https://github.com/TuttiFrooti/holidaze-booking-proof-concept"
-                    >
-                      <GoLinkExternal />
-                    </ProjectLink>
-                  </ProjectInfoTextWrapInner>
-                </ProjectInfoTextWrap>
-              </ProjectInfo>
-              <ProjectLangsWrap inverted>
-                <ProjectLang>REACT</ProjectLang>
-                <ProjectLang>JS</ProjectLang>
-                <ProjectLang>HTML</ProjectLang>
-                <ProjectLang>CSS</ProjectLang>
-              </ProjectLangsWrap>
-            </ProjectInfoWrap>
-          </Project>
+          <Anime
+            delay={(el: Element, index: number) => 500}
+            {...configRight}
+            autoplay={autoplayState}
+          >
+            <Project inverted>
+              <Img src={holidazePic} />
+              <ProjectInfoWrap
+                inverted
+                target="_blank"
+                href="https://github.com/TuttiFrooti/holidaze-booking-proof-concept"
+              >
+                <ProjectInfo>
+                  <ProjectInfoTextWrap>
+                    <ProjectInfoTextWrapInner>
+                      <ProjectInfoPos>
+                        <H2 work>Holidaze booking</H2>
+                        <ProjectInfoText>
+                          A rough mock of a accomodation booking website with
+                          focus on Bergen, Norway
+                        </ProjectInfoText>
+                      </ProjectInfoPos>
+                      <ProjectLink>
+                        <GoLinkExternal />
+                      </ProjectLink>
+                    </ProjectInfoTextWrapInner>
+                  </ProjectInfoTextWrap>
+                </ProjectInfo>
+                <ProjectLangsWrap inverted>
+                  <ProjectLang>REACT</ProjectLang>
+                  <ProjectLang>JS</ProjectLang>
+                  <ProjectLang>HTML</ProjectLang>
+                  <ProjectLang>CSS</ProjectLang>
+                </ProjectLangsWrap>
+              </ProjectInfoWrap>
+            </Project>
+          </Anime>
         </ProjectPos>
       </ProjectsCont>
     </Container>
@@ -98,6 +137,7 @@ const ProjectPos = styled.div`
   display: flex;
   flex-direction: column;
   gap: 80px;
+  overflow: hidden;
 `;
 
 interface ProjectsStyle {
@@ -126,13 +166,14 @@ const Img = styled.img`
   }
 `;
 
-const ProjectInfoWrap = styled.div<ProjectsStyle>`
+const ProjectInfoWrap = styled.a<ProjectsStyle>`
   width: 500px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-left: ${(props) => (props.inverted ? "0" : "-80px")};
-  margin-right: ${(props) => (props.inverted ? "-80px" : "0")};
+  color: ${({ theme }) => theme.colors.textLight};
+  margin-left: ${({ inverted }) => (inverted ? "0" : "-80px")};
+  margin-right: ${({ inverted }) => (inverted ? "-80px" : "0")};
   margin-top: 16px;
   position: relative;
 
@@ -142,6 +183,12 @@ const ProjectInfoWrap = styled.div<ProjectsStyle>`
     margin-top: 0;
     max-width: 700px;
     width: 100%;
+  }
+
+  :hover {
+    ${H2} {
+      color: ${({ theme }) => theme.colors.primary};
+    }
   }
 `;
 
@@ -169,13 +216,14 @@ const ProjectInfoText = styled.p`
   max-width: 350px;
 `;
 
-const ProjectLink = styled.a`
+const ProjectLink = styled.div`
   width: 30px;
   height: 30px;
   margin-top: 10px;
-  color: ${(props) => props.theme.colors.textLight};
+  color: ${(props) => props.theme.colors.primary};
   cursor: pointer;
   font-size: 30px;
+  transition: color 0.2s ease;
 
   @media only screen and (max-width: 600px) {
     font-size: 20px;

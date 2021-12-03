@@ -5,8 +5,8 @@ import { BsGithub, BsTwitter, BsTwitch } from 'react-icons/all';
 
 const Contact = (props: any, ref: any) => {
   return (
-    <Container mt="60px" ref={ref} {...props}>
-      <H1 loc="Contact">
+    <Container mt="10px" ref={ref} {...props}>
+      <H1>
         <Split>
           Where to find me<Highlight>.</Highlight>
         </Split>

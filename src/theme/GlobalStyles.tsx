@@ -81,18 +81,14 @@ export const Container = styled.div<MarginTop>`
   max-width: 1320px;
   width: 100%;
   margin: ${({ mt }) => mt || "0"} auto 0;
-  padding-top: 50px;
+  padding-top: 100px;
 `;
 
 export const Split = styled.span`
 
 `;
 
-interface H1Props {
-  readonly loc?: string;
-}
-
-export const H1 = styled.h1<H1Props>`
+export const H1 = styled.h1`
   letter-spacing: 0.2px;
   font-size: 48px;
 
@@ -100,7 +96,7 @@ export const H1 = styled.h1<H1Props>`
     display: flex;
     flex-direction: column;
     text-align: center;
-    ${({ loc }) => (loc === "Contact" && `margin: 0 20px;`)};
+    margin: 0 20px;
     ${Split} {
     }
   }
@@ -121,13 +117,11 @@ export const H2 = styled.h2<PaddingPos>`
   text-underline-offset: 2px;
   margin-bottom: 5px;
   color: ${({ theme }) => theme.colors.textLight};
+  transition: color 0.3s ease;
 
   @media screen and (max-width: 600px) {
-    ${({loc}) => loc === "Contact" ?
-      `font-size: 38px;`
-      :
-      `font-size: 20px;`
-    };
+    ${({ loc }) =>
+      loc === "Contact" ? `font-size: 38px;` : `font-size: 20px;`};
   }
 `;
 

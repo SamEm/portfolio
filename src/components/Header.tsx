@@ -29,19 +29,22 @@ const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }
   };
 
   useEffect(() => {
-
     window.onscroll = () => {
       setScrollTopOffset(window.pageYOffset > 40);
     }
   }, [])
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   const scrollTo = (e: any) => {
-    console.log(typeof e)
     e.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
+
   const responsiveScrollTo = (e: any) => {
     setButtonState(!buttonState);
     e.scrollIntoView({
@@ -53,13 +56,12 @@ const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }
   const openResponsiveMenu = () => { 
     setButtonState(!buttonState);
   }
-  console.log(scrollTopOffset)
 
   return (
     <Head scrolled={scrollTopOffset}>
       <InnerHead>
         <Link>
-          <Logo src={logo} onClick={() => scrollTo(AboveTheFoldRef.current)} />
+          <Logo src={logo} onClick={() => scrollToTop()} />
         </Link>
 
         <Anime delay={(el: Element, index: number) => 900} {...config}>
