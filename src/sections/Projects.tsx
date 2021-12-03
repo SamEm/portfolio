@@ -85,7 +85,7 @@ const Projects = (props: any, ref: any) => {
               <H2>Week Number Extension</H2>
               <ShortDesc>
                 A Chrome extension that displays the week number in the Chrome
-                taskbar
+                taskbar.
               </ShortDesc>
             </ProjectTop>
             <ProjectBottom>
@@ -135,8 +135,8 @@ const Projects = (props: any, ref: any) => {
               <GithubIcon>
                 <CgWebsite />
               </GithubIcon>
-              <H2>1324 game</H2>
-              <ShortDesc>A short memory game created in Javascript</ShortDesc>
+              <H2>1234 game</H2>
+              <ShortDesc>A short memory game created in Javascript where you have to remember the previous number.</ShortDesc>
             </ProjectTop>
             <ProjectBottom>
               <ProjectLangsWrap>
