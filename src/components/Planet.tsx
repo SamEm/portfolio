@@ -23,7 +23,6 @@ export default function Planet() {
     opacity: [0, 1],
   };
 
-
   useEffect(() => {
     const windowWidth = window.innerWidth;
   }, []);
@@ -46,7 +45,6 @@ export default function Planet() {
         </Dots>
       </Anime>
 
-      <SVGShadow x={mouseMove.x} y={mouseMove.y} />
     </Container>
   );
 }
@@ -59,41 +57,6 @@ const Container = styled.div`
   height: 100%;
   z-index: -1;
   overflow: hidden;
-`;
-
-const SVGShadow = styled.div<MouseMovePos>`
-  position: absolute;
-
-  background-color: ${(props) => props.theme.colors.primary};
-  border-radius: 100%;
-  max-width: 800px;
-  height: 800px;
-
-  top: -800px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-
-  /* background: radial-gradient(
-    farthest-corner at top,
-    rgba(84, 61, 143, 0.4) -80%,
-    rgba(43, 39, 69, 0.4) 70%
-  ); */
-  /* box-shadow: 20px 20px 50px 0px rgba(0, 0, 0, 0.3); */
-  /* transform: translate3d(-${(props) => props.x}%, -${(props) =>
-    props.y}%, 0); */
-
-  /* @media only screen and (max-width: 1400px) {
-    height: 1100px;
-  }
-  @media only screen and (max-width: 800px) {
-    height: 600px;
-    top: -400px;
-  }
-  @media only screen and (max-width: 500px) {
-    height: 400px;
-    top: -250px;
-  } */
 `;
 
 const SVG1 = styled.div<MouseMovePos>`
@@ -116,11 +79,11 @@ const SVG1 = styled.div<MouseMovePos>`
   @media only screen and (max-width: 1400px) {
     height: 1100px;
   }
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 820px) {
     height: 600px;
     top: -400px;
   }
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 520px) {
     height: 400px;
     top: -250px;
   }
@@ -137,16 +100,15 @@ const SVG2 = styled.div<MouseMovePos>`
   left: 0;
   right: 0;
   margin: 0 auto;
-  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     height: ${1100 * 1.04}px;
   }
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 820px) {
     height: ${600 * 1.04}px;
     top: -400px;
   }
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 520px) {
     height: ${400 * 1.04}px;
     top: -250px;
   }
@@ -163,16 +125,15 @@ const SVG3 = styled.div<MouseMovePos>`
   left: 0;
   right: 0;
   margin: 0 auto;
-  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     height: ${1100 * 1.08}px;
   }
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 820px) {
     height: ${600 * 1.08}px;
     top: -400px;
   }
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 520px) {
     height: ${400 * 1.08}px;
     top: -250px;
   }
@@ -189,7 +150,6 @@ const Dots = styled.div<MouseMovePos>`
   right: 0;
   margin: 0 auto;
   overflow: hidden;
-  /* transform: translate3d(-${(props) => props.x}%, -${(props) => props.y}%, 0); */
 
   @media only screen and (max-width: 1400px) {
     gap: 0;
@@ -209,7 +169,6 @@ const Circle = styled.div<DotStyle>`
   flex-shrink: 0;
   opacity: ${({ opacity }) => opacity};
 
-  /* box-shadow: inset 0 -10px 0 ${(props) => props.theme.colors}; */
   box-shadow: inset 0 -10px 0 #2c2a47;
   ${({ shadow }) =>
     shadow

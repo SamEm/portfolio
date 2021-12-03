@@ -80,51 +80,54 @@ export const Container = styled.div<MarginTop>`
   align-items: center;
   max-width: 1320px;
   width: 100%;
-  margin: 0 auto;
+  margin: ${({ mt }) => mt || "0"} auto 0;
   padding-top: 50px;
-  margin-top: ${(props) => props.mt || "0"};
-
-  /* @media screen and (max-width: 1550px) {
-    margin-top: ${(props) => `calc(${props.mt}/2)` || "50px"};
-  } */
 `;
 
 export const Split = styled.span`
 
 `;
 
-export const H1 = styled.h1`
+interface H1Props {
+  readonly loc?: string;
+}
+
+export const H1 = styled.h1<H1Props>`
+  letter-spacing: 0.2px;
   font-size: 48px;
-  letter-spacing: .2px;
 
   @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
     text-align: center;
+    ${({ loc }) => (loc === "Contact" && `margin: 0 20px;`)};
     ${Split} {
-      
     }
   }
-
 `;
 
 interface PaddingPos {
   readonly work?: boolean;
   readonly hover?: boolean;
+  readonly loc?: string;
 }
 
 export const H2 = styled.h2<PaddingPos>`
   font-size: 36px;
   letter-spacing: 0.2px;
   text-decoration: underline;
-  text-decoration-color: ${(props) => props.theme.colors.primary};
+  text-decoration-color: ${({ theme }) => theme.colors.primary};
   text-decoration-thickness: 4px;
   text-underline-offset: 2px;
   margin-bottom: 5px;
-  color: ${(props) => props.theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.textLight};
 
   @media screen and (max-width: 600px) {
-    font-size: 20px;
+    ${({loc}) => loc === "Contact" ?
+      `font-size: 38px;`
+      :
+      `font-size: 20px;`
+    };
   }
 `;
 

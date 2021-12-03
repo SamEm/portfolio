@@ -5,15 +5,15 @@ import { BsGithub, BsTwitter, BsTwitch } from 'react-icons/all';
 
 const Contact = (props: any, ref: any) => {
   return (
-    <Container mt="100px" ref={ref} {...props}>
-      <H1>
+    <Container mt="60px" ref={ref} {...props}>
+      <H1 loc="Contact">
         <Split>
           Where to find me<Highlight>.</Highlight>
         </Split>
       </H1>
       <InnerCont>
         <LinkStyle href="mailto:hello@logiz.net">
-          <H2>hello@logiz.net</H2>
+          <H2 loc="Contact">hello@logiz.net</H2>
         </LinkStyle>
 
         <SocialWrap>

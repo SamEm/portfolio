@@ -17,8 +17,6 @@ export default function Clouds() {
         {...config}
       >
         <SVG
-          width="350"
-          height="205"
           viewBox="0 0 350 205"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +36,6 @@ export default function Clouds() {
         {...config}
       >
         <SVG2
-          width="383"
-          height="206"
           viewBox="0 0 383 206"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -64,10 +60,14 @@ const Cloud = styled.div`
 `;
 
 const SVG = styled.svg`
+  width: 350px;
+  height: 205px;
   position: absolute;
 `;
 
 const SVG2 = styled.svg`
+  width: 383px;
+  height: 206px;
   position: absolute;
   top: 20px;
   left: 50px;

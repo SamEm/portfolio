@@ -17,7 +17,7 @@ const Home = (props: any, ref: any) => {
         <Div>
           <Anime delay={(el: Element, index: number) => 500} {...config}>
             <H1>
-              Ohey there. I am <Highlight>Sam</Highlight>.
+              Ohey there! I am <Highlight>Sam</Highlight>.
             </H1>
           </Anime>
           <Anime delay={(el: Element, index: number) => 1000} {...config}>
@@ -54,7 +54,12 @@ const OuterDiv = styled.div<ColorStyle>`
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
+
+  @media only screen and (max-width: 700px) {
+    margin-bottom: 0;
+    margin-top: 150px;
+  }
 `;
 
 const Div = styled.div<ColorStyle>`

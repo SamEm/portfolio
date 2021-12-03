@@ -10,5 +10,5 @@ export default function Footer() {
 const FooterContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 50px 0 20px;
 `;

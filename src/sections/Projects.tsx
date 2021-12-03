@@ -189,14 +189,16 @@ export default forwardRef(Projects);
 const ProjectsWrap = styled.div`
   display: inline-grid;
   grid-template-columns: repeat(auto-fill, 350px);
-  grid-column-gap: 40px;
-  grid-row-gap: 40px;
+  gap: 40px;
   justify-content: center;
 
   width: 100%;
-  margin-top: 50px;
+  margin-top: 60px;
   @media screen and (max-width: 1350px) {
     margin-top: 50px;
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(auto-fill, 300px);
   }
 `;
 
@@ -207,6 +209,11 @@ const Project = styled.div`
 
   background-color: ${(props) => props.theme.colors.raisinBlack};
   border-radius: 5px;
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+    height: 280px;
+  }
 `;
 
 const ProjectPadding = styled.div`
@@ -232,6 +239,9 @@ const GithubIcon = styled.div`
 
 const ShortDesc = styled.div`
   margin-top: 10px;
+  @media screen and (max-width: 410px) {
+    margin: 20px 0;
+  }
 `;
 
 const ProjectLangsWrap = styled.div`

@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { Helmet } from "react-helmet";
 import Header from "./components/Header";
 import Planet from "./components/Planet";
-import { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "./theme/GlobalStyles";
 import AboveTheFold from "./sections/AboveTheFold";
 import Work from "./sections/Work";
@@ -20,17 +20,21 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sam's Portfolio</title>
+      </Helmet>
       <GlobalStyle />
       <Planet />
       <BackgroundGlow />
       <Stars />
+      <Header
+        AboveTheFoldRef={AboveTheFoldRef}
+        WorkRef={WorkRef}
+        ProjectsRef={ProjectsRef}
+        ContactRef={ContactRef}
+      />
       <Page>
-        <Header
-          AboveTheFoldRef={AboveTheFoldRef}
-          WorkRef={WorkRef}
-          ProjectsRef={ProjectsRef}
-          ContactRef={ContactRef}
-        />
         <AboveTheFold ref={AboveTheFoldRef} />
         <Work ref={WorkRef} />
         <Projects ref={ProjectsRef} />

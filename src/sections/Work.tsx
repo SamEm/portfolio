@@ -32,7 +32,7 @@ const Work = (props: any, ref: any) => {
                       target="_blank"
                       href="https://github.com/TuttiFrooti/spacex-ts"
                     >
-                      <GoLinkExternal />
+                        <GoLinkExternal />
                     </ProjectLink>
                   </ProjectInfoTextWrapInner>
                 </ProjectInfoTextWrap>
@@ -85,7 +85,7 @@ const Work = (props: any, ref: any) => {
 export default forwardRef(Work);
 
 const ProjectsCont = styled.div`
-  margin-top: 50px;
+  margin-top: 60px;
   width: 100%;
 
   @media screen and (max-width: 1350px) {
@@ -97,7 +97,7 @@ const ProjectPos = styled.div`
   padding: 0 30px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
 `;
 
 interface ProjectsStyle {
@@ -174,8 +174,13 @@ const ProjectLink = styled.a`
   height: 30px;
   margin-top: 10px;
   color: ${(props) => props.theme.colors.textLight};
-  font-size: 30px;
   cursor: pointer;
+  font-size: 30px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+    margin-top: 5px;
+  }
 `;
 
 const ProjectLangsWrap = styled.div<ProjectsStyle>`

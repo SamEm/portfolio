@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-import styled, { css, keyframes } from "styled-components";
+import { FC, useState, useEffect } from 'react';
+import styled, { css } from "styled-components";
 import { Highlight } from '../theme/GlobalStyles';
 import logo from '../assets/logo.png';
 import { HiOutlineMenuAlt3, AiOutlineClose } from 'react-icons/all';
@@ -20,12 +20,20 @@ interface ResponsiveMenuProps {
 
 const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }) => {
   const [buttonState, setButtonState] = useState(false);
+  const [scrollTopOffset, setScrollTopOffset] = useState(false);
   
   const config = {
     duartion: 1000,
     translateY: ["-5em", 0],
     opacity: [0, 1],
   };
+
+  useEffect(() => {
+
+    window.onscroll = () => {
+      setScrollTopOffset(window.pageYOffset > 40);
+    }
+  }, [])
 
   const scrollTo = (e: any) => {
     console.log(typeof e)
@@ -45,9 +53,10 @@ const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }
   const openResponsiveMenu = () => { 
     setButtonState(!buttonState);
   }
+  console.log(scrollTopOffset)
 
   return (
-    <Head>
+    <Head scrolled={scrollTopOffset}>
       <InnerHead>
         <Link>
           <Logo src={logo} onClick={() => scrollTo(AboveTheFoldRef.current)} />
@@ -92,13 +101,25 @@ const Header: FC<Props> = ({ AboveTheFoldRef, WorkRef, ProjectsRef, ContactRef }
 
 export default Header;
 
-const Head = styled.header`
+interface HeadProps {
+  scrolled: boolean;
+}
+
+const Head = styled.header<HeadProps>`
   margin: 0 auto;
   width: 100%;
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: sticky;
+  top: -10px;
   z-index: 1;
+  @media only screen and (min-width: 751px) {
+    ${({ scrolled }) =>
+      scrolled &&
+      css`
+        background-color: ${({ theme }) => theme.colors.blobColor};
+      `}
+  }
 `;
 
 const Logo = styled.img`
@@ -113,7 +134,7 @@ const Menu = styled.nav`
 
 const Link = styled.div`
   font-size: 18px;
-  color: ${(props) => props.theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.textLight};
   transition: color 0.2s ease;
   cursor: pointer;
 
@@ -181,9 +202,10 @@ const InnerHead = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 40px 80px 0;
+  margin: 20px 50px 10px;
 
   @media only screen and (max-width: 750px) {
+    margin: 20px 30px 0;
     ${Menu} {
       display: none;
     }
