@@ -1,23 +1,22 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { BsGithub, GoLinkExternal } from 'react-icons/all';
+import {
+  BsGithub,
+  GoLinkExternal,
+  CgWebsite,
+  BiExtension,
+} from "react-icons/all";
 import { Container, H1, H2, Highlight, Split } from "../theme/GlobalStyles";
-
-/*
-  Projects to add:
-
-  - Censor list
-  - Portfolio
-  - Week number
-  
-*/
 
 const Projects = (props: any, ref: any) => {
   return (
     <Container mt="100px" ref={ref} {...props}>
       <H1>
-        Notable <Split>Projects <Highlight>&</Highlight> Concepts<Highlight>.</Highlight></Split>
+        Notable{" "}
+        <Split>
+          Projects <Highlight>&</Highlight> Concepts<Highlight>.</Highlight>
+        </Split>
       </H1>
       <ProjectsWrap>
         <Project>
@@ -26,8 +25,10 @@ const Projects = (props: any, ref: any) => {
               <GithubIcon>
                 <BsGithub />
               </GithubIcon>
-              <H2>Bug reporting website</H2>
-              <ShortDesc>Short project description</ShortDesc>
+              <H2>Portfolio</H2>
+              <ShortDesc>
+                This personal portfolio website created with React.
+              </ShortDesc>
             </ProjectTop>
             <ProjectBottom>
               <ProjectLangsWrap>
@@ -39,7 +40,7 @@ const Projects = (props: any, ref: any) => {
 
               <ProjectLink
                 target="_blank"
-                href="https://github.com/SamEm/bug-reporting-website"
+                href="https://github.com/SamEm/portfolio"
               >
                 <GoLinkExternal />
               </ProjectLink>
@@ -52,8 +53,68 @@ const Projects = (props: any, ref: any) => {
               <GithubIcon>
                 <BsGithub />
               </GithubIcon>
+              <H2>Censor list</H2>
+              <ShortDesc>
+                A tool to fortify Discord moderation bots' ability to censor
+                inappropriate phrases.
+              </ShortDesc>
+            </ProjectTop>
+            <ProjectBottom>
+              <ProjectLangsWrap>
+                <ProjectLang>REACT</ProjectLang>
+                <ProjectLang>JS</ProjectLang>
+                <ProjectLang>HTML</ProjectLang>
+                <ProjectLang>CSS</ProjectLang>
+              </ProjectLangsWrap>
+
+              <ProjectLink
+                target="_blank"
+                href="https://github.com/SamEm/Censor-List-website"
+              >
+                <GoLinkExternal />
+              </ProjectLink>
+            </ProjectBottom>
+          </ProjectPadding>
+        </Project>
+        <Project>
+          <ProjectPadding>
+            <ProjectTop>
+              <GithubIcon>
+                <BiExtension />
+              </GithubIcon>
+              <H2>Week Number Extension</H2>
+              <ShortDesc>
+                A Chrome extension that displays the week number in the Chrome
+                taskbar
+              </ShortDesc>
+            </ProjectTop>
+            <ProjectBottom>
+              <ProjectLangsWrap>
+                <ProjectLang>JS</ProjectLang>
+                <ProjectLang>HTML</ProjectLang>
+                <ProjectLang>CSS</ProjectLang>
+              </ProjectLangsWrap>
+
+              <ProjectLink
+                target="_blank"
+                href="https://chrome.google.com/webstore/detail/week-number/lcdmdikpgdjoagalpngockiddgkbdaig?utm_source=chrome-app-launcher-info-dialog"
+              >
+                <GoLinkExternal />
+              </ProjectLink>
+            </ProjectBottom>
+          </ProjectPadding>
+        </Project>
+        <Project>
+          <ProjectPadding>
+            <ProjectTop>
+              <GithubIcon>
+                <CgWebsite />
+              </GithubIcon>
               <H2>Twitch panels</H2>
-              <ShortDesc>Short project description</ShortDesc>
+              <ShortDesc>
+                A set of custom made Twitch description panels free to use for
+                the community.
+              </ShortDesc>
             </ProjectTop>
             <ProjectBottom>
               <ProjectLangsWrap>
@@ -72,10 +133,10 @@ const Projects = (props: any, ref: any) => {
           <ProjectPadding>
             <ProjectTop>
               <GithubIcon>
-                <BsGithub />
+                <CgWebsite />
               </GithubIcon>
               <H2>1324 game</H2>
-              <ShortDesc>Short project description</ShortDesc>
+              <ShortDesc>A short memory game created in Javascript</ShortDesc>
             </ProjectTop>
             <ProjectBottom>
               <ProjectLangsWrap>
@@ -87,6 +148,32 @@ const Projects = (props: any, ref: any) => {
               <ProjectLink
                 target="_blank"
                 href="https://projects.logiz.net/1234/"
+              >
+                <GoLinkExternal />
+              </ProjectLink>
+            </ProjectBottom>
+          </ProjectPadding>
+        </Project>
+        <Project>
+          <ProjectPadding>
+            <ProjectTop>
+              <GithubIcon>
+                <BsGithub />
+              </GithubIcon>
+              <H2>Bug reporting website</H2>
+              <ShortDesc>A bug reporting form proof of concept.</ShortDesc>
+            </ProjectTop>
+            <ProjectBottom>
+              <ProjectLangsWrap>
+                <ProjectLang>REACT</ProjectLang>
+                <ProjectLang>JS</ProjectLang>
+                <ProjectLang>HTML</ProjectLang>
+                <ProjectLang>CSS</ProjectLang>
+              </ProjectLangsWrap>
+
+              <ProjectLink
+                target="_blank"
+                href="https://github.com/SamEm/bug-reporting-website"
               >
                 <GoLinkExternal />
               </ProjectLink>

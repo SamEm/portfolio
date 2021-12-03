@@ -59,13 +59,17 @@ const Work = (props: any, ref: any) => {
                         focus on Bergen, Norway
                       </ProjectInfoText>
                     </ProjectInfoPos>
-                    <ProjectLink target="_blank" href="">
+                    <ProjectLink
+                      target="_blank"
+                      href="https://github.com/TuttiFrooti/holidaze-booking-proof-concept"
+                    >
                       <GoLinkExternal />
                     </ProjectLink>
                   </ProjectInfoTextWrapInner>
                 </ProjectInfoTextWrap>
               </ProjectInfo>
               <ProjectLangsWrap inverted>
+                <ProjectLang>REACT</ProjectLang>
                 <ProjectLang>JS</ProjectLang>
                 <ProjectLang>HTML</ProjectLang>
                 <ProjectLang>CSS</ProjectLang>

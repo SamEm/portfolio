@@ -18,16 +18,16 @@ const Contact = (props: any, ref: any) => {
         </LinkStyle>
 
         <SocialWrap>
-          <Social href="">
+          <Social target="_blank" href="https://github.com/SamEm">
             <BsGithub />
           </Social>
-          <Social href="">
+          <Social target="_blank" href="https://github.com/TuttiFrooti">
             <BsGithub />
           </Social>
-          <Social href="">
+          <Social target="_blank" href="https://twitter.com/Logiz_">
             <BsTwitter />
           </Social>
-          <Social href="">
+          <Social target="_blank" href="https://www.twitch.tv/logiiz">
             <BsTwitch />
           </Social>
         </SocialWrap>
