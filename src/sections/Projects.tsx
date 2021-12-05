@@ -257,7 +257,7 @@ const Project = styled.a`
 
   @media screen and (max-width: 600px) {
     width: 300px;
-    height: 250px;
+    height: 100%;
   }
 
   :hover {
@@ -290,6 +290,7 @@ const GithubIcon = styled.div`
 
 const ShortDesc = styled.div`
   margin-top: 10px;
+  line-height: 1.4;
   @media screen and (max-width: 600px) {
     margin: 20px 0;
   }

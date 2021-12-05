@@ -201,6 +201,10 @@ const ProjectInfoTextWrap = styled.div`
   height: 150px;
   border-radius: 5px;
 
+  @media screen and (max-width: 320px) {
+    height: 170px;
+  }
+
   @media screen and (max-width: 1200px) {
     border-radius: 0 0 5px 5px;
   }
@@ -214,6 +218,7 @@ const ProjectInfoTextWrapInner = styled.div`
 
 const ProjectInfoText = styled.p`
   max-width: 350px;
+  line-height: 1.4;
 `;
 
 const ProjectLink = styled.div`

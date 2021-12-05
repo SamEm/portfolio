@@ -24,13 +24,11 @@ const theme: DefaultTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
   * {
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans', sans-serif;
-    letter-spacing: 0.3px;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
     text-decoration: none;
   }
 
