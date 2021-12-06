@@ -67,7 +67,7 @@ const Projects = (props: any, ref: any) => {
                 <ProjectBottom>
                   <ProjectLangsWrap>
                     <ProjectLang>REACT</ProjectLang>
-                    <ProjectLang>JS</ProjectLang>
+                    <ProjectLang>TS</ProjectLang>
                     <ProjectLang>HTML</ProjectLang>
                     <ProjectLang>CSS</ProjectLang>
                   </ProjectLangsWrap>

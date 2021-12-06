@@ -69,7 +69,7 @@ const Work = (props: any, ref: any) => {
                   </ProjectInfoTextWrap>
                 </ProjectInfo>
                 <ProjectLangsWrap>
-                  <ProjectLang>JS</ProjectLang>
+                  <ProjectLang>TS</ProjectLang>
                   <ProjectLang>HTML</ProjectLang>
                   <ProjectLang>CSS</ProjectLang>
                 </ProjectLangsWrap>
