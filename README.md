@@ -1,5 +1,6 @@
 # Personal Portfolio
 This is my personal portfolio page created in React and TypeScript
+### Website: [https://logiz.net](logiz.net)
 
 ## To install and run it:
 
